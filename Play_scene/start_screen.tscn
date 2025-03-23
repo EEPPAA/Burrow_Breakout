@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c3r4axmsiqufr" path="res://Sprites/Background/Bg11.png" id="7_6005g"]
 [ext_resource type="PackedScene" uid="uid://b6l4owe8omvlv" path="res://Shop/shop.tscn" id="8_huc1m"]
 [ext_resource type="PackedScene" uid="uid://dngye375kknm4" path="res://Player/player.tscn" id="9_oldva"]
-[ext_resource type="Texture2D" uid="uid://g4s28ud4rajf" path="res://Sprites/Place_Holder/UI/Start.png" id="10_e4aho"]
-[ext_resource type="Texture2D" uid="uid://cjbht2m3ceb7h" path="res://Sprites/Place_Holder/UI/Start_Hover.png" id="11_2udct"]
-[ext_resource type="Texture2D" uid="uid://becnqv4xri36x" path="res://Sprites/Place_Holder/UI/Quit.png" id="12_b81rk"]
-[ext_resource type="Texture2D" uid="uid://nv7mek47es7f" path="res://Sprites/Place_Holder/UI/Quit_Hover.png" id="13_r53f4"]
+[ext_resource type="Texture2D" uid="uid://d1ho2jpwi8nbu" path="res://Sprites/UI/Start.png" id="11_ki3mr"]
+[ext_resource type="Texture2D" uid="uid://cwyhucn8eb3cw" path="res://Sprites/UI/Start_Hover.png" id="12_i715b"]
+[ext_resource type="Texture2D" uid="uid://c6b3hv554hsdo" path="res://Sprites/UI/Quit.png" id="13_6o4r4"]
+[ext_resource type="Texture2D" uid="uid://d4jaj52q8ng4f" path="res://Sprites/UI/Quit_Hover.png" id="14_kyhdx"]
 [ext_resource type="Texture2D" uid="uid://533fccj81pef" path="res://Sprites/UI/BB_Logo.png" id="15_6pyek"]
 
 [node name="StartScreen" type="Node2D"]
@@ -139,29 +139,28 @@ anchor_left = 2.9
 anchor_top = 0.562
 anchor_right = 2.9
 anchor_bottom = 0.562
-offset_left = -226.0
+offset_left = -211.0
 offset_top = 77.52
-offset_right = -6.0
+offset_right = -21.0
 offset_bottom = 132.52
-texture_normal = ExtResource("10_e4aho")
-texture_hover = ExtResource("11_2udct")
+texture_normal = ExtResource("11_ki3mr")
+texture_hover = ExtResource("12_i715b")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Quit" type="TextureButton" parent="UI"]
-custom_minimum_size = Vector2(220, 55)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.9
 anchor_top = 0.562
 anchor_right = 2.9
 anchor_bottom = 0.562
-offset_left = -226.0
-offset_top = 143.52
-offset_right = -6.0
-offset_bottom = 198.52
-texture_normal = ExtResource("12_b81rk")
-texture_hover = ExtResource("13_r53f4")
+offset_left = -211.0
+offset_top = 139.52
+offset_right = -21.0
+offset_bottom = 194.52
+texture_normal = ExtResource("13_6o4r4")
+texture_hover = ExtResource("14_kyhdx")
 ignore_texture_size = true
 stretch_mode = 0
 
