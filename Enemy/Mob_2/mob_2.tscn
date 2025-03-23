@@ -1,0 +1,177 @@
+[gd_scene load_steps=16 format=3 uid="uid://bacy4xvcl8htm"]
+
+[ext_resource type="Script" path="res://Enemy/Mob_2/mob_2.gd" id="1_ahhrb"]
+[ext_resource type="Texture2D" uid="uid://c4227dj43elye" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot1.png" id="2_6xt1n"]
+[ext_resource type="Texture2D" uid="uid://bdfi8nk2wv8ok" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot2.png" id="3_n4tsb"]
+[ext_resource type="Texture2D" uid="uid://j4h7ew3ausdy" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot3.png" id="4_q5r3b"]
+[ext_resource type="Texture2D" uid="uid://cq7dkpb1f75qv" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot4.png" id="5_fwhgf"]
+[ext_resource type="Texture2D" uid="uid://cwx6po3uumoch" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move1.png" id="6_fgd5q"]
+[ext_resource type="Texture2D" uid="uid://dg2jyqktx7nrf" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move2.png" id="7_dvi7v"]
+[ext_resource type="Texture2D" uid="uid://d17fgiewrw0qg" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move3.png" id="8_2f5mk"]
+[ext_resource type="PackedScene" uid="uid://cqm8k8ki1n8jv" path="res://Universal_Animation/score_anim.tscn" id="9_gnopg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6eht"]
+radius = 12.4777
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rh5jv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6xt1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n4tsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q5r3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fwhgf")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fgd5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dvi7v")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fgd5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dvi7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2f5mk")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7c3j"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvocr"]
+size = Vector2(20.5, 4.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhrfe"]
+size = Vector2(5.5, 11)
+
+[sub_resource type="Curve" id="Curve_k6f3a"]
+_data = [Vector2(0.183168, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.777251, 0.164835), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Mob_2" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ahhrb")
+speed = 50.0
+gravity = 1000.0
+resPawnTimer = 120.0
+atkDelay = 1.0
+Points = 300
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.65, 1.5)
+
+[node name="Detect_Player" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Radius" type="CollisionShape2D" parent="Detect_Player"]
+visible = false
+position = Vector2(7.7307e-12, -1.90735e-06)
+rotation = 1.5708
+scale = Vector2(8.335, 14.695)
+shape = SubResource("CircleShape2D_b6eht")
+debug_color = Color(0.675412, 0.46556, 0.541306, 0.42)
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, -2.38419e-07)
+scale = Vector2(0.721429, 0.75)
+sprite_frames = SubResource("SpriteFrames_rh5jv")
+animation = &"Attack"
+frame = 3
+frame_progress = 1.0
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_x7c3j")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-10, 0)
+target_position = Vector2(0, 39)
+collision_mask = 2
+
+[node name="Wall_Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Detect"]
+position = Vector2(-0.25, 1)
+shape = SubResource("RectangleShape2D_jvocr")
+debug_color = Color(0.661743, 0.513752, 7.70092e-07, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(0, -3)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.500002, -2)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_uhrfe")
+debug_color = Color(0.971905, 0, 0.444742, 0.42)
+
+[node name="Death" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_max = 250.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_k6f3a")
+color = Color(0.635294, 0.219608, 0.878431, 1)
+hue_variation_min = -0.34
+hue_variation_max = 0.74
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="Score_Anim" parent="." instance=ExtResource("9_gnopg")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = ""
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Detect_Player" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_entered" from="Wall_Detect" to="." method="_on_wall_detect_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

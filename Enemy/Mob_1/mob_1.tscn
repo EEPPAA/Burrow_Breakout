@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://bn2vf1nchwcwl"]
+
+[ext_resource type="Script" path="res://Enemy/Mob_1/mob_1.gd" id="1_h8y8a"]
+[ext_resource type="Texture2D" uid="uid://c2ncl5n4bqmp1" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-1.png" id="1_nn2eq"]
+[ext_resource type="Texture2D" uid="uid://c804fki2p0fqy" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-2.png" id="2_lduj5"]
+[ext_resource type="Texture2D" uid="uid://di48d7xwwsf7a" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-3.png" id="3_ne7au"]
+[ext_resource type="Texture2D" uid="uid://b5u2rupsj2f54" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-4.png" id="4_dcoii"]
+[ext_resource type="Texture2D" uid="uid://cos7nm7ctfjxy" path="res://Sprites/Place_Holder/Enemy/Frog/jump/frog-jump-1.png" id="5_35t7h"]
+[ext_resource type="Texture2D" uid="uid://dn7wevqb0n0ac" path="res://Sprites/Place_Holder/Enemy/Frog/jump/frog-jump-2.png" id="6_o83hc"]
+[ext_resource type="PackedScene" uid="uid://cqm8k8ki1n8jv" path="res://Universal_Animation/score_anim.tscn" id="8_086ym"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smlna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nn2eq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lduj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ne7au")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dcoii")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_35t7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o83hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_nn2eq")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gsvy"]
+size = Vector2(26, 8.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krxba"]
+size = Vector2(9, 15)
+
+[sub_resource type="Curve" id="Curve_a35up"]
+_data = [Vector2(0.183168, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.777251, 0.164835), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjjxj"]
+radius = 5.0
+height = 24.0
+
+[node name="Mob_1" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 2
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_max_angle = 1.06291
+floor_snap_length = 8.1
+script = ExtResource("1_h8y8a")
+speed = 75.0
+gravity = 1000.0
+Points = 100
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.19209e-07, 0.5)
+scale = Vector2(1.5, 1.45)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-11, 0)
+target_position = Vector2(0, 28)
+collision_mask = 2
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, -2.38419e-07)
+scale = Vector2(0.721429, 0.75)
+sprite_frames = SubResource("SpriteFrames_smlna")
+animation = &"Walk"
+
+[node name="Wall_Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Detect"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_3gsvy")
+debug_color = Color(0.661743, 0.513752, 7.70092e-07, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_krxba")
+debug_color = Color(0.971905, 0, 0.444742, 0.42)
+
+[node name="Death" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_max = 250.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_a35up")
+color = Color(0.635294, 0.219608, 0.878431, 1)
+hue_variation_min = -0.34
+hue_variation_max = 0.74
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vjjxj")
+
+[node name="Score_Anim" parent="." instance=ExtResource("8_086ym")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = ""
+
+[connection signal="body_entered" from="Wall_Detect" to="." method="_on_wall_detect_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

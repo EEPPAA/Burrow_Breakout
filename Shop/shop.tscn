@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6l4owe8omvlv"]
+
+[ext_resource type="Texture2D" uid="uid://c4u4grygp7eoh" path="res://Sprites/Shop/ShopMan/Shop_Man1.png" id="1_wllso"]
+[ext_resource type="Script" path="res://Shop/shop.gd" id="1_wutwe"]
+[ext_resource type="Texture2D" uid="uid://ju707n4nb20u" path="res://Sprites/Shop/ShopMan/Shop_Man2.png" id="2_lupne"]
+[ext_resource type="Texture2D" uid="uid://brjhhkajhcpcv" path="res://Sprites/Shop/ShopMan/Shop_Man3.png" id="3_mupan"]
+[ext_resource type="Texture2D" uid="uid://ulvfjx08xrvp" path="res://Sprites/Shop/ShopSign/ShopSign1.png" id="5_cnqbm"]
+[ext_resource type="Texture2D" uid="uid://cmh8oqye1e8ms" path="res://Sprites/Shop/ShopSign/ShopSign2.png" id="6_r2bnw"]
+[ext_resource type="Texture2D" uid="uid://xff8suy7337y" path="res://Sprites/Shop/ShopSign/ShopSign3.png" id="7_natw5"]
+[ext_resource type="Texture2D" uid="uid://dwpbjppsl8wb0" path="res://Sprites/Shop/ShopSign/ShopSign4.png" id="8_xvlsl"]
+[ext_resource type="PackedScene" uid="uid://qj40emoirwpt" path="res://Shop/shop_overlay.tscn" id="9_ka0qd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we822"]
+size = Vector2(27, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl0rs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wllso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lupne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mupan")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ye0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cnqbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r2bnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_natw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xvlsl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Shop" type="Node2D"]
+z_index = -1
+texture_filter = 1
+script = ExtResource("1_wutwe")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_we822")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gl0rs")
+frame_progress = 0.522851
+
+[node name="ShopSignAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.10543e-15, -15)
+scale = Vector2(0.90625, 0.805556)
+sprite_frames = SubResource("SpriteFrames_1ye0w")
+frame = 3
+frame_progress = 0.804128
+
+[node name="Shop_Overlay" parent="." instance=ExtResource("9_ka0qd")]
+visible = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

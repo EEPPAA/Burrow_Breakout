@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl72oij8mo8ts"]
+
+[ext_resource type="Script" path="res://tileMap/Interactable_Tiles/Crmbl_Tiles/crumbling_platform.gd" id="1_g26fj"]
+[ext_resource type="Texture2D" uid="uid://c2q885hkjog65" path="res://Sprites/Tiles/Crmbl_Plat.png" id="2_6gsg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waaad"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kv61"]
+size = Vector2(16, 2)
+
+[sub_resource type="Animation" id="Animation_i0p64"]
+resource_name = "Flash"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v2o02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrg0e"]
+_data = {
+"Flash": SubResource("Animation_i0p64"),
+"RESET": SubResource("Animation_v2o02")
+}
+
+[sub_resource type="Curve" id="Curve_peiw1"]
+_data = [Vector2(0.0398773, 0.913228), 0.0, 0.0, 0, 0, Vector2(0.751534, 0.108616), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hl085"]
+colors = PackedColorArray(0.345098, 0.211765, 0, 1, 1, 1, 1, 1)
+
+[node name="crumbling_Platform" type="StaticBody2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_g26fj")
+Breaktimer = 0.6
+respawnTimer = 3.0
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_waaad")
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-8, -8)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, -1)
+shape = SubResource("RectangleShape2D_3kv61")
+debug_color = Color(0.951226, 1.63645e-06, 0.564705, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6gsg6")
+hframes = 4
+
+[node name="Shake" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jrg0e")
+}
+
+[node name="Crmble" type="CPUParticles2D" parent="."]
+position = Vector2(0, -5)
+emitting = false
+amount = 40
+speed_scale = 0.5
+randomness = 0.32
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(7, 1)
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_peiw1")
+color = Color(0.580392, 0.352941, 0, 1)
+color_initial_ramp = SubResource("Gradient_hl085")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

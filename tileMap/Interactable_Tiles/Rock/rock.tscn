@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://doreshmpik3su"]
+
+[ext_resource type="Texture2D" uid="uid://ctjy15jhi0xyy" path="res://Sprites/Tiles/BurrowBreakout_Tile_set/BurowBreakout_Tileset-Sheet.png" id="1_rvgr2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54ljr"]
+size = Vector2(16, 16)
+
+[node name="Rock" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 11
+mass = 1000.0
+can_sleep = false
+freeze_mode = 1
+angular_damp = 12.758
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rvgr2")
+hframes = 10
+vframes = 9
+frame = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_54ljr")

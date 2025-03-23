@@ -1,0 +1,273 @@
+[gd_scene load_steps=32 format=3 uid="uid://dngye375kknm4"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_qruyg"]
+[ext_resource type="Texture2D" uid="uid://bt5r5vwpyqajk" path="res://Sprites/Player_Gardener/Climb/Smal_Gardener_Climb1.png" id="2_u1yol"]
+[ext_resource type="Texture2D" uid="uid://bixtjm3pvpwb6" path="res://Sprites/Player_Gardener/Crouch/Smal_Gardener_Crouch1.png" id="2_x3m5e"]
+[ext_resource type="Texture2D" uid="uid://bknu6xnqhduh" path="res://Sprites/Player_Gardener/Climb/Smal_Gardener_Climb2.png" id="3_p4rsg"]
+[ext_resource type="Texture2D" uid="uid://dd54hvlahx5td" path="res://Sprites/Player_Gardener/Crouch/Smal_Gardener_Crouch2.png" id="3_pxkup"]
+[ext_resource type="Texture2D" uid="uid://cngwtfkjt5hxj" path="res://Sprites/Player_Gardener/Crouch_Walk/Smal_Gardener_Crouch_Walk1.png" id="4_w4xhd"]
+[ext_resource type="Texture2D" uid="uid://b0rhr315sdfjk" path="res://Sprites/Player_Gardener/Crouch_Walk/Smal_Gardener_Crouch_Walk2.png" id="5_esqok"]
+[ext_resource type="Texture2D" uid="uid://dsy112cijbjke" path="res://Sprites/Player_Gardener/Crouch_Walk/Smal_Gardener_Crouch_Walk3.png" id="6_26scs"]
+[ext_resource type="Texture2D" uid="uid://c5pf7eojiianw" path="res://Sprites/Player_Gardener/Crouch_Walk/Smal_Gardener_Crouch_Walk4.png" id="7_ixo8a"]
+[ext_resource type="Texture2D" uid="uid://dd8c14av6n0aq" path="res://Sprites/Player_Gardener/Fall/Smal_Gardener_Fall.png" id="7_ninq2"]
+[ext_resource type="Texture2D" uid="uid://cwtayw7octvjl" path="res://Sprites/Player_Gardener/Crouch_Walk/Smal_Gardener_Crouch_Walk5.png" id="8_faj2h"]
+[ext_resource type="Texture2D" uid="uid://debuqgus3imed" path="res://Sprites/Player_Gardener/Crouch_Walk/Smal_Gardener_Crouch_Walk6.png" id="9_bynl5"]
+[ext_resource type="Texture2D" uid="uid://02xapmgp3ees" path="res://Sprites/Player_Gardener/Idle/Smal_Gardener_Idle1.png" id="10_rbxh5"]
+[ext_resource type="Texture2D" uid="uid://ds5i8433rmcx" path="res://Sprites/Player_Gardener/Idle/Smal_Gardener_Idle2.png" id="11_vdhe6"]
+[ext_resource type="Texture2D" uid="uid://bmpkmjck3dmsf" path="res://Sprites/Player_Gardener/Jump/Smal_Gardener_Jump.png" id="12_tjscb"]
+[ext_resource type="Texture2D" uid="uid://21p66rk33wg3" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk1.png" id="13_iyrkv"]
+[ext_resource type="Texture2D" uid="uid://dshil2umypweh" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk2.png" id="14_pgwcf"]
+[ext_resource type="Texture2D" uid="uid://f3rmlw6de2yx" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk3.png" id="15_84ffv"]
+[ext_resource type="Texture2D" uid="uid://bor1xa5ugf854" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk4.png" id="16_bvl4f"]
+[ext_resource type="Texture2D" uid="uid://cm033iui2tykc" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk5.png" id="17_ihcke"]
+[ext_resource type="Texture2D" uid="uid://2dlrh3ve03hw" path="res://Sprites/Player_Gardener/Slippery/Smal_Gardener_Slippery-Sheet.png" id="21_bfcgv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b84av"]
+atlas = ExtResource("21_bfcgv")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8kb5"]
+atlas = ExtResource("21_bfcgv")
+region = Rect2(25, 0, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhmt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u1yol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p4rsg")
+}],
+"loop": true,
+"name": &"Climb",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x3m5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pxkup")
+}],
+"loop": true,
+"name": &"Duck",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_w4xhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_esqok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_26scs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ixo8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_faj2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bynl5")
+}],
+"loop": true,
+"name": &"Duck_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ninq2")
+}],
+"loop": false,
+"name": &"Fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ninq2")
+}],
+"loop": false,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rbxh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vdhe6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tjscb")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_iyrkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pgwcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_84ffv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bvl4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ihcke")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b84av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8kb5")
+}],
+"loop": true,
+"name": &"Slippery",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odqgu"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjomn"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74tl2"]
+size = Vector2(9, 12.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cc2n"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hi6v"]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="Curve" id="Curve_0qp87"]
+_data = [Vector2(0.183168, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.777251, 0.164835), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_tknxi"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.994536)
+colors = PackedColorArray(1, 0.765901, 0.727378, 1, 0.884314, 3.20069e-06, 1.15514e-06, 1)
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+collision_mask = 11
+floor_constant_speed = true
+floor_snap_length = 10.0
+script = ExtResource("1_qruyg")
+HP = 3
+SPEED = 180.0
+JUMP_VELOCITY = -295.0
+acc = 30
+friction = 200.0
+gravity = 1000.0
+coyote_time = 0.08
+jump_buffer_time = 0.15
+knockBack = -200
+knockBack_x = 1.5
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -5)
+scale = Vector2(1.1875, 1.21053)
+sprite_frames = SubResource("SpriteFrames_lhmt2")
+animation = &"Run"
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_odqgu")
+
+[node name="Crouched" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cjomn")
+debug_color = Color(0.274533, 0.632162, 0, 0.42)
+
+[node name="force_Crouch" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Crouched" type="CollisionShape2D" parent="force_Crouch"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_74tl2")
+debug_color = Color(0.964333, 0, 0.493477, 0.42)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+
+[node name="NormalHbox" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_3cc2n")
+debug_color = Color(0.874883, 0.344957, 3.85046e-07, 0.42)
+
+[node name="CrouchedHbox" type="CollisionShape2D" parent="HurtBox"]
+visible = false
+shape = SubResource("CapsuleShape2D_8hi6v")
+debug_color = Color(0.842832, 0.00107274, 0.916711, 0.42)
+
+[node name="knockback" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="Death" type="CPUParticles2D" parent="."]
+position = Vector2(-1, -9)
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_max = 250.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_0qp87")
+color = Color(0.746585, 2.71939e-06, 1.05888e-06, 1)
+color_ramp = SubResource("Gradient_tknxi")
+
+[node name="detect_up" type="RayCast2D" parent="."]
+position = Vector2(0, 7)
+target_position = Vector2(0, -27)
+collision_mask = 32
+
+[node name="detect_down" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(0, 18)
+collision_mask = 32
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
+zoom = Vector2(3.35, 3.35)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 40.0
+rotation_smoothing_enabled = true
+
+[connection signal="body_entered" from="force_Crouch" to="." method="_on_force_crouch_body_entered"]
+[connection signal="body_exited" from="force_Crouch" to="." method="_on_force_crouch_body_exited"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="knockback" to="." method="_on_knockback_timeout"]

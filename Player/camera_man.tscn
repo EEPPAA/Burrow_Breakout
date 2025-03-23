@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1e7m2gtjo6jg"]
+
+[ext_resource type="Texture2D" uid="uid://c0opqbfbhc8ty" path="res://Sprites/Place_Holder/Player/Player-shoot/player-shoot3.png" id="1_4xblc"]
+[ext_resource type="Script" path="res://Player/camera_man.gd" id="1_yvku2"]
+
+[node name="CameraMan" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_yvku2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4xblc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.35, 3.35)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 40.0
+rotation_smoothing_enabled = true

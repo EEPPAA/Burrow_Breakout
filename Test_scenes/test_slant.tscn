@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwkiq4x0ucxpq"]
+
+[ext_resource type="PackedScene" uid="uid://dngye375kknm4" path="res://Player/player.tscn" id="1_w1omq"]
+[ext_resource type="Texture2D" uid="uid://dsuhfc1iygokd" path="res://Sprites/Background/awesomeCavePixelArt.png" id="1_xd8a4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njitf"]
+size = Vector2(631, 18)
+
+[node name="Test Slant" type="Node2D"]
+
+[node name="AwesomeCavePixelArt" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(195.25, -49.5)
+scale = Vector2(0.551172, 0.465278)
+texture = ExtResource("1_xd8a4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(205, 62)
+shape = SubResource("RectangleShape2D_njitf")
+
+[node name="Player" parent="." instance=ExtResource("1_w1omq")]

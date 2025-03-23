@@ -1,0 +1,237 @@
+[gd_scene load_steps=36 format=3 uid="uid://cpnut0p826n1"]
+
+[ext_resource type="Script" path="res://Enemy/Mob_3/mob_3.gd" id="1_cxkfa"]
+[ext_resource type="Texture2D" uid="uid://cqnqcyqx4aimq" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Death/skeleton_Death1.png" id="2_th1al"]
+[ext_resource type="Texture2D" uid="uid://boghfjusn13wq" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Death/skeleton_Death2.png" id="3_lspxu"]
+[ext_resource type="Texture2D" uid="uid://bwcyh7kp8yiij" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Death/skeleton_Death3.png" id="4_rxln2"]
+[ext_resource type="Texture2D" uid="uid://d10hbtcff1c3o" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Death/skeleton_Death4.png" id="5_04knb"]
+[ext_resource type="Texture2D" uid="uid://dmiqfqgttmkdf" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-IDle/skeleton_idle1.png" id="6_c6aj8"]
+[ext_resource type="Texture2D" uid="uid://cpm87gmoqm1av" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-IDle/skeleton_idle2.png" id="7_vkosr"]
+[ext_resource type="Texture2D" uid="uid://bl1ciqo7jv0ai" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-IDle/skeleton_idle3.png" id="8_2joxr"]
+[ext_resource type="Texture2D" uid="uid://dge2wqai60gfe" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-IDle/skeleton_idle4.png" id="9_cnhag"]
+[ext_resource type="Texture2D" uid="uid://dwoa5b82mdufl" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Revive/skeleton_revive1.png" id="10_15lqq"]
+[ext_resource type="Texture2D" uid="uid://dn08nx3xpvp4e" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Revive/skeleton_revive2.png" id="11_6gq8r"]
+[ext_resource type="Texture2D" uid="uid://cll4qvshbtiwt" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Revive/skeleton_revive3.png" id="12_csrpm"]
+[ext_resource type="Texture2D" uid="uid://cjjfq25pb117n" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Revive/skeleton_revive4.png" id="13_ve5ar"]
+[ext_resource type="Texture2D" uid="uid://b3du0huewgwh8" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk1.png" id="14_nvhon"]
+[ext_resource type="Texture2D" uid="uid://bvhyd7vcmgxvj" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk2.png" id="15_ejr5r"]
+[ext_resource type="Texture2D" uid="uid://bw14h8lb54lie" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk3.png" id="16_udprx"]
+[ext_resource type="Texture2D" uid="uid://bxr0k77bjmj6i" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk4.png" id="17_jfpev"]
+[ext_resource type="Texture2D" uid="uid://dpkopg2iak4kx" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk5.png" id="18_gkslx"]
+[ext_resource type="Texture2D" uid="uid://c7ir8ctqt4mkj" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk6.png" id="19_bamqs"]
+[ext_resource type="Texture2D" uid="uid://q0wk2tmmws5v" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk7.png" id="20_ouos2"]
+[ext_resource type="Texture2D" uid="uid://dvcd7qxbkujuh" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Run/skeleton_walk8.png" id="21_8ljrk"]
+[ext_resource type="Texture2D" uid="uid://cjdu6xcoks5wa" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk1.png" id="22_rcrnr"]
+[ext_resource type="Texture2D" uid="uid://d2bshk2wdxnit" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk2.png" id="23_4vrhd"]
+[ext_resource type="Texture2D" uid="uid://bsk2ruw3mqgle" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk3.png" id="24_vufid"]
+[ext_resource type="Texture2D" uid="uid://bky3a273w2wgv" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk4.png" id="25_0kduy"]
+[ext_resource type="Texture2D" uid="uid://3pctve132iw0" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk5.png" id="26_2xsnb"]
+[ext_resource type="Texture2D" uid="uid://c0oejt16wrthb" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk6.png" id="27_4isvh"]
+[ext_resource type="Texture2D" uid="uid://cobpynj3d2cvo" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk7.png" id="28_y7dy4"]
+[ext_resource type="Texture2D" uid="uid://b3m023rmdy320" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Walk/skeleton-walk8.png" id="29_8vve8"]
+[ext_resource type="PackedScene" uid="uid://cqm8k8ki1n8jv" path="res://Universal_Animation/score_anim.tscn" id="30_qq6sa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vu386"]
+radius = 26.0
+height = 230.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bjow"]
+size = Vector2(18.5, 5.25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66i8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_th1al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lspxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rxln2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_04knb")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c6aj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vkosr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2joxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cnhag")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_15lqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6gq8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_csrpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ve5ar")
+}],
+"loop": false,
+"name": &"Revive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_nvhon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ejr5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_udprx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jfpev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gkslx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_bamqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ouos2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8ljrk")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 19.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_rcrnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4vrhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_vufid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_0kduy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_2xsnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_4isvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_y7dy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_8vve8")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ppvvr"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28lg0"]
+size = Vector2(10, 5)
+
+[node name="Mob_3" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_cxkfa")
+speed = 25.0
+resPawnTimer = 3.0
+gravity = 1000.0
+Points = 5
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(-1.07288e-06, 3)
+scale = Vector2(1.1, 1.5)
+
+[node name="Player_Detect" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detect"]
+position = Vector2(1, 14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vu386")
+debug_color = Color(0.797335, 0.00189173, 0.956582, 0.419608)
+
+[node name="Wall_Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Detect"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_6bjow")
+debug_color = Color(0.661743, 0.513752, 7.70092e-07, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 1.0625)
+sprite_frames = SubResource("SpriteFrames_66i8l")
+animation = &"Dead"
+
+[node name="Body" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_ppvvr")
+
+[node name="HurtBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -8.5)
+shape = SubResource("RectangleShape2D_28lg0")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+position = Vector2(11, 2)
+target_position = Vector2(0, 30)
+collision_mask = 2
+
+[node name="Score_Anim" parent="." instance=ExtResource("30_qq6sa")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = ""
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Player_Detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="Player_Detect" to="." method="_on_player_detect_body_exited"]
+[connection signal="body_entered" from="Wall_Detect" to="." method="_on_wall_detect_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

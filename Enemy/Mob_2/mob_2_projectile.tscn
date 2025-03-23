@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://cd3uaavbexrdc"]
+
+[ext_resource type="Script" path="res://Enemy/Mob_2/mob_2_projectile.gd" id="1_ljo7w"]
+[ext_resource type="Texture2D" uid="uid://di2imy60ftcy7" path="res://Sprites/Place_Holder/Enemy/Lizard/Fireball/fireball1.png" id="2_dbhe4"]
+[ext_resource type="Texture2D" uid="uid://pldlm0ydi66l" path="res://Sprites/Place_Holder/Enemy/Lizard/Fireball/fireball2.png" id="3_hhlih"]
+[ext_resource type="Texture2D" uid="uid://cmxakfs27p0jt" path="res://Sprites/Place_Holder/Enemy/Lizard/Fireball/fireball3.png" id="4_lqd3d"]
+[ext_resource type="Texture2D" uid="uid://jt61kpjm45xo" path="res://Sprites/Place_Holder/Enemy/Lizard/Fireball/fireball4.png" id="5_4fc3i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpnh4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dbhe4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hhlih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lqd3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4fc3i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j0gq"]
+radius = 5.59822
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpyey"]
+radius = 5.0
+
+[sub_resource type="Curve" id="Curve_4hkcw"]
+_data = [Vector2(0.183168, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.913514, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Mob_2_Projectile" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_ljo7w")
+speed = 100.0
+gravity = 600.0
+JUMP_VELOCITY = -225.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_wpnh4")
+frame = 1
+frame_progress = 0.943516
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.07177, 1.07457)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4j0gq")
+debug_color = Color(0.958599, 2.31028e-06, 0.526257, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tpyey")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(-0.773391, 0.796971)
+
+[node name="Death" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_max = 100.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_4hkcw")
+color = Color(1, 0.434167, 0.03, 1)
+hue_variation_min = -0.34
+hue_variation_max = 0.74
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(0, 23)
+collision_mask = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://qj40emoirwpt"]
+
+[ext_resource type="Script" path="res://Shop/shop_overlay.gd" id="1_vslbv"]
+[ext_resource type="Texture2D" uid="uid://bkh6nwovo701c" path="res://Sprites/Background/ffade.png" id="2_xumht"]
+[ext_resource type="Texture2D" uid="uid://dvm2ku8c2pgsn" path="res://Sprites/Shop/Shop_Overlay/Shop_Overlay1.png" id="3_ma8lh"]
+[ext_resource type="Texture2D" uid="uid://bjyu2hyaunaks" path="res://Sprites/Shop/Shop_Overlay/Shop_Overlay2.png" id="4_tnhsj"]
+[ext_resource type="Texture2D" uid="uid://g4ccvgu7mn1i" path="res://Sprites/Shop/Shop_Overlay/Shop_Overlay3.png" id="5_e80hl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kqa4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ma8lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tnhsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e80hl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Shop_Overlay" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_vslbv")
+
+[node name="SubViewport" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Ffade" type="Sprite2D" parent="SubViewport"]
+modulate = Color(1, 1, 1, 0.443137)
+position = Vector2(576, 324)
+scale = Vector2(1.825, 0.691667)
+texture = ExtResource("2_xumht")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewport"]
+position = Vector2(576.625, 321.875)
+scale = Vector2(7.86731, 8.175)
+sprite_frames = SubResource("SpriteFrames_6kqa4")
+frame_progress = 0.421343
+
+[node name="Button" type="Button" parent="SubViewport"]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 48.0
+offset_right = 1080.0
+offset_bottom = 104.0
+text = "X"
+
+[connection signal="pressed" from="SubViewport/Button" to="." method="_on_button_pressed"]
