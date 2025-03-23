@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://e7ro6aafkpc6"]
+[gd_scene load_steps=16 format=4 uid="uid://e7ro6aafkpc6"]
 
 [ext_resource type="Texture2D" uid="uid://dsuhfc1iygokd" path="res://Sprites/Background/awesomeCavePixelArt.png" id="1_1lvog"]
+[ext_resource type="Script" path="res://Play_scene/start_screen.gd" id="1_rhrgt"]
 [ext_resource type="TileSet" uid="uid://bd7sk1o30q7b3" path="res://tileMap/Test_Tile_Set_1.tres" id="2_kpldy"]
 [ext_resource type="PackedScene" uid="uid://bacy4xvcl8htm" path="res://Enemy/Mob_2/mob_2.tscn" id="3_fecmm"]
 [ext_resource type="PackedScene" uid="uid://bn2vf1nchwcwl" path="res://Enemy/Mob_1/mob_1.tscn" id="4_o3073"]
@@ -9,13 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://c3r4axmsiqufr" path="res://Sprites/Background/Bg11.png" id="7_6005g"]
 [ext_resource type="PackedScene" uid="uid://b6l4owe8omvlv" path="res://Shop/shop.tscn" id="8_huc1m"]
 [ext_resource type="PackedScene" uid="uid://dngye375kknm4" path="res://Player/player.tscn" id="9_oldva"]
-[ext_resource type="Texture2D" uid="uid://ulvfjx08xrvp" path="res://Sprites/Shop/ShopSign/ShopSign1.png" id="10_0rcl7"]
+[ext_resource type="Texture2D" uid="uid://g4s28ud4rajf" path="res://Sprites/Place_Holder/UI/Start.png" id="10_e4aho"]
+[ext_resource type="Texture2D" uid="uid://cjbht2m3ceb7h" path="res://Sprites/Place_Holder/UI/Start_Hover.png" id="11_2udct"]
+[ext_resource type="Texture2D" uid="uid://becnqv4xri36x" path="res://Sprites/Place_Holder/UI/Quit.png" id="12_b81rk"]
+[ext_resource type="Texture2D" uid="uid://nv7mek47es7f" path="res://Sprites/Place_Holder/UI/Quit_Hover.png" id="13_r53f4"]
+[ext_resource type="Texture2D" uid="uid://533fccj81pef" path="res://Sprites/UI/BB_Logo.png" id="15_6pyek"]
 
 [node name="StartScreen" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_rhrgt")
 
 [node name="Player" parent="." instance=ExtResource("9_oldva")]
-z_index = 5
+z_index = 1
 position = Vector2(-1, 1)
 
 [node name="AwesomeCavePixelArt" type="Sprite2D" parent="."]
@@ -126,28 +132,42 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Quit" type="TextureButton" parent="UI"]
+[node name="Play" type="TextureButton" parent="UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.9
 anchor_top = 0.562
 anchor_right = 2.9
 anchor_bottom = 0.562
-offset_left = -232.0
-offset_top = 54.52
-offset_bottom = 126.52
-texture_normal = ExtResource("10_0rcl7")
+offset_left = -226.0
+offset_top = 77.52
+offset_right = -6.0
+offset_bottom = 132.52
+texture_normal = ExtResource("10_e4aho")
+texture_hover = ExtResource("11_2udct")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Quit2" type="TextureButton" parent="UI"]
+[node name="Quit" type="TextureButton" parent="UI"]
+custom_minimum_size = Vector2(220, 55)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.9
 anchor_top = 0.562
 anchor_right = 2.9
 anchor_bottom = 0.562
-offset_left = -232.0
-offset_top = 128.52
-offset_bottom = 200.52
-texture_normal = ExtResource("10_0rcl7")
+offset_left = -226.0
+offset_top = 143.52
+offset_right = -6.0
+offset_bottom = 198.52
+texture_normal = ExtResource("12_b81rk")
+texture_hover = ExtResource("13_r53f4")
+ignore_texture_size = true
 stretch_mode = 0
+
+[node name="BbLogo" type="Sprite2D" parent="UI"]
+scale = Vector2(2.91, 2.91)
+texture = ExtResource("15_6pyek")
+
+[connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Quit" to="." method="_on_quit_pressed"]
