@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://e7ro6aafkpc6"]
+[gd_scene load_steps=11 format=4 uid="uid://e7ro6aafkpc6"]
 
 [ext_resource type="Texture2D" uid="uid://dsuhfc1iygokd" path="res://Sprites/Background/awesomeCavePixelArt.png" id="1_1lvog"]
 [ext_resource type="TileSet" uid="uid://bd7sk1o30q7b3" path="res://tileMap/Test_Tile_Set_1.tres" id="2_kpldy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c3r4axmsiqufr" path="res://Sprites/Background/Bg11.png" id="7_6005g"]
 [ext_resource type="PackedScene" uid="uid://b6l4owe8omvlv" path="res://Shop/shop.tscn" id="8_huc1m"]
 [ext_resource type="PackedScene" uid="uid://dngye375kknm4" path="res://Player/player.tscn" id="9_oldva"]
+[ext_resource type="Texture2D" uid="uid://ulvfjx08xrvp" path="res://Sprites/Shop/ShopSign/ShopSign1.png" id="10_0rcl7"]
 
 [node name="StartScreen" type="Node2D"]
 texture_filter = 1
@@ -50,7 +51,7 @@ scale = Vector2(2.17917, 1.82813)
 texture = ExtResource("7_6005g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-15, 80)
+position = Vector2(0, 80)
 zoom = Vector2(1.985, 1.985)
 
 [node name="Mobs" type="Node2D" parent="."]
@@ -86,7 +87,7 @@ position = Vector2(432, 10)
 position = Vector2(-422, 6)
 
 [node name="Mob_12" parent="Mobs" instance=ExtResource("3_fecmm")]
-position = Vector2(-213, 2)
+position = Vector2(-195, -12)
 
 [node name="Mob_13" parent="Mobs" instance=ExtResource("5_7gvu2")]
 position = Vector2(131, 195)
@@ -117,3 +118,35 @@ position = Vector2(363, 6)
 
 [node name="Shop" parent="." instance=ExtResource("8_huc1m")]
 position = Vector2(-47, -1)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quit" type="TextureButton" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.9
+anchor_top = 0.562
+anchor_right = 2.9
+anchor_bottom = 0.562
+offset_left = -232.0
+offset_top = 54.52
+offset_bottom = 126.52
+texture_normal = ExtResource("10_0rcl7")
+stretch_mode = 0
+
+[node name="Quit2" type="TextureButton" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.9
+anchor_top = 0.562
+anchor_right = 2.9
+anchor_bottom = 0.562
+offset_left = -232.0
+offset_top = 128.52
+offset_bottom = 200.52
+texture_normal = ExtResource("10_0rcl7")
+stretch_mode = 0
