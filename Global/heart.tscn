@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmrbae1d1f2fg"]
+
+[ext_resource type="Texture2D" uid="uid://bto0sfcmk0fpl" path="res://Sprites/UI/HealthSpritesheet.png" id="1_smt1r"]
+
+[node name="Heart" type="Panel"]
+texture_filter = 1
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_smt1r")
+centered = false
+hframes = 2

@@ -139,7 +139,7 @@ func _on_hurt_box_body_entered(body):
 	reservedMovement=movement 
 	isAlive = false
 	anim.play("Dead")
-	print("Dead")
+	#print("Dead")
 	
 	$Player_Detect.set_deferred("monitoring",false)
 	$Wall_Detect.set_deferred("monitoring",false)

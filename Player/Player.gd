@@ -338,10 +338,11 @@ func _on_hurt_box_body_entered(body):
 	velocity.y = knockBack
 	#knockbacktimer.start()
 	knockback_Func()
-	$HurtBox.set_deferred("monitoring",true)	
+	
 	anim.play("Hurt")
 	HP-=1
 	await anim.animation_finished		
+	$HurtBox.set_deferred("monitoring",true)	
 	
 	#knockbacktimer.stop()
 	

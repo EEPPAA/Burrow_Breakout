@@ -16,8 +16,9 @@ func _process(delta):
 
 
 func _on_finish_body_entered(body):
+	#$UI.hide()
 	$Ending/Level_Finished.Time_Stop()
-	$UI.hide()
+	get_tree().paused =  true
 	$Ending.show()
 	Anim.play("Fade")
 	await Anim.animation_finished

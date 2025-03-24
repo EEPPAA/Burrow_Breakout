@@ -91,7 +91,6 @@ scale = Vector2(1.65, 1.5)
 collision_layer = 0
 
 [node name="Radius" type="CollisionShape2D" parent="Detect_Player"]
-visible = false
 position = Vector2(7.7307e-12, -1.90735e-06)
 rotation = 1.5708
 scale = Vector2(8.335, 14.695)

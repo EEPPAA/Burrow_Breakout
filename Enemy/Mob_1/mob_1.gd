@@ -93,7 +93,7 @@ func _on_wall_detect_body_entered(body):
 		
 func death():
 	GlobalVar.Score += Points
-	print(GlobalVar.Score)
+	#print(GlobalVar.Score)
 	isAlive = false
 	$".".set_collision_layer_value(4,false)
 	#$".".set_collision_layer_value(2,false)
