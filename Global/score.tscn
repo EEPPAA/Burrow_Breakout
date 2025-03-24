@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqfwjufb404pk"]
+
+[ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="1_yphve"]
+[ext_resource type="Script" path="res://Play_scene/Score.gd" id="2_byvf2"]
+
+[node name="Score" type="Label"]
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_yphve")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+script = ExtResource("2_byvf2")

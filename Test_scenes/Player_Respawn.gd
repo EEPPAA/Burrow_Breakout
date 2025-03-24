@@ -2,14 +2,15 @@ extends Node2D
 @onready var Player = preload("res://Player/player.tscn")
 @onready var Anim = $Ending/AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	GlobalVar.Score = 0
+	GlobalVar.Deathcount -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !$Player_Slot.has_node("Player"):
+		GlobalVar.Deathcount += 1
+		print(GlobalVar.Deathcount)
 		var Inst_player = Player.instantiate()
 		$Player_Slot.add_child(Inst_player)
 
