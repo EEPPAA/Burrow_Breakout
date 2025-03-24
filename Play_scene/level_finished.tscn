@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr1vlh8tekqg7"]
+
+[ext_resource type="FontFile" uid="uid://dme8tavkxt2is" path="res://Fonts/Daydream.ttf" id="1_jno4s"]
+[ext_resource type="Script" path="res://Test_scenes/TimeFinish_Test.gd" id="1_rmxi2"]
+[ext_resource type="PackedScene" uid="uid://bprxw4rvh73ux" path="res://Global/timer.tscn" id="2_ltmc3"]
+
+[node name="Level_Finished" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rmxi2")
+
+[node name="Main_Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 460.0
+offset_right = 466.0
+offset_bottom = 596.0
+text = "Back"
+
+[node name="Next_Level" type="Button" parent="."]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 460.0
+offset_right = 1060.0
+offset_bottom = 596.0
+text = "Next"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -276.0
+offset_right = 262.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = -1
+theme_override_fonts/font = ExtResource("1_jno4s")
+theme_override_font_sizes/font_size = 33
+text = "BURROW BREAKOUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" parent="." instance=ExtResource("2_ltmc3")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -25.5
+offset_right = 98.5
+offset_bottom = 25.5
+text = "0000000"
