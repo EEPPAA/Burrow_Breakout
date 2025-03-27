@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://c05hspy3feqrr"]
+[gd_scene load_steps=19 format=4 uid="uid://c05hspy3feqrr"]
 
 [ext_resource type="Script" path="res://Test_scenes/Player_Respawn.gd" id="1_uqyh7"]
 [ext_resource type="TileSet" uid="uid://bd7sk1o30q7b3" path="res://tileMap/Test_Tile_Set_1.tres" id="2_c87y1"]
 [ext_resource type="PackedScene" uid="uid://d1e7m2gtjo6jg" path="res://Player/camera_man.tscn" id="3_urhum"]
+[ext_resource type="PackedScene" uid="uid://dngye375kknm4" path="res://Player/player.tscn" id="4_gdoy5"]
 [ext_resource type="PackedScene" uid="uid://bacy4xvcl8htm" path="res://Enemy/Mob_2/mob_2.tscn" id="4_on2hn"]
 [ext_resource type="PackedScene" uid="uid://bn2vf1nchwcwl" path="res://Enemy/Mob_1/mob_1.tscn" id="5_emne6"]
 [ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="6_1uxvx"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cqfwjufb404pk" path="res://Global/score.tscn" id="8_mtwy2"]
 [ext_resource type="PackedScene" uid="uid://bprxw4rvh73ux" path="res://Global/timer.tscn" id="9_xnixi"]
 [ext_resource type="Texture2D" uid="uid://dsuhfc1iygokd" path="res://Sprites/Background/awesomeCavePixelArt.png" id="10_kvi1d"]
+[ext_resource type="PackedScene" uid="uid://c7ccjl4xltyxh" path="res://Global/heart_container.tscn" id="10_xf4bf"]
 [ext_resource type="PackedScene" uid="uid://dr1vlh8tekqg7" path="res://Play_scene/level_finished.tscn" id="11_hl1ms"]
 [ext_resource type="Texture2D" uid="uid://cx7as757liqo3" path="res://Sprites/UI/black.png" id="12_hav1r"]
 
@@ -59,6 +61,59 @@ script = ExtResource("1_uqyh7")
 metadata/_edit_horizontal_guides_ = [-740.0]
 metadata/_edit_vertical_guides_ = [170.0]
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="FPS" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_1uxvx")
+theme_override_font_sizes/font_size = 30
+text = "fps"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_lyj22")
+
+[node name="Score" parent="UI" instance=ExtResource("8_mtwy2")]
+offset_left = 129.0
+offset_top = 5.0
+offset_right = 264.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 40
+text = "000000"
+horizontal_alignment = 0
+
+[node name="Score_Text" type="Label" parent="UI"]
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 140.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("6_1uxvx")
+theme_override_font_sizes/font_size = 40
+text = "Score: "
+
+[node name="Timer" parent="UI" instance=ExtResource("9_xnixi")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -178.0
+offset_top = 5.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "00:00:000"
+
+[node name="Heart_container" parent="UI" instance=ExtResource("10_xf4bf")]
+offset_left = 3.0
+offset_top = 46.0
+offset_right = 607.0
+offset_bottom = 81.0
+
 [node name="Cave" type="TileMap" parent="."]
 tile_set = ExtResource("2_c87y1")
 format = 2
@@ -78,6 +133,7 @@ tile_set = ExtResource("2_c87y1")
 
 [node name="Slime" type="TileMapLayer" parent="Cave"]
 z_index = 2
+tile_map_data = PackedByteArray("AADz/7v/AwAAAAIAAADz/7r/AwAAAAAAAADz/7z/AwAAAAEAAADz/73/AwAAAAEAAADz/77/AwAAAAIAAADz/7//AwAAAAEAAADz/8D/AwAAAAMAAAD2/8L/AwABAAIAAAD2/8P/AwABAAIAAAD2/8T/AwABAAIAAAD2/8X/AwABAAEAAAD2/8b/AwABAAEAAAD2/8f/AwABAAEAAAD2/8j/AwADAAMAAAD1/8j/AwAAAAMAAAD1/8f/AwAAAAAAAAD2/8H/AwADAAAAAAD0/8P/AwADAAMAAADz/8P/AwAAAAMAAAD0/8L/AwADAAAAAADz/8L/AwAAAAIAAADz/8H/AwAAAAAAAAA=")
 tile_set = ExtResource("2_c87y1")
 
 [node name="Foreground" type="TileMapLayer" parent="Cave"]
@@ -87,6 +143,9 @@ tile_set = ExtResource("2_c87y1")
 [node name="Player_Slot" type="Node2D" parent="."]
 
 [node name="CameraMan" parent="Player_Slot" instance=ExtResource("3_urhum")]
+
+[node name="Player" parent="Player_Slot" instance=ExtResource("4_gdoy5")]
+position = Vector2(9, -28)
 
 [node name="Projectile_Mob" type="Node2D" parent="."]
 
@@ -153,53 +212,6 @@ position = Vector2(2819, -680)
 position = Vector2(354, -669)
 
 [node name="Undead_Mob" type="Node2D" parent="."]
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="FPS" type="Label" parent="UI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -0.5
-offset_right = 0.5
-offset_bottom = 31.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("6_1uxvx")
-theme_override_font_sizes/font_size = 30
-text = "fps"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("7_lyj22")
-
-[node name="Score" parent="UI" instance=ExtResource("8_mtwy2")]
-offset_left = 129.0
-offset_top = 5.0
-offset_right = 264.0
-offset_bottom = 45.0
-theme_override_font_sizes/font_size = 40
-text = "000000"
-horizontal_alignment = 0
-
-[node name="Score_Text" type="Label" parent="UI"]
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 140.0
-offset_bottom = 45.0
-theme_override_fonts/font = ExtResource("6_1uxvx")
-theme_override_font_sizes/font_size = 40
-text = "Score: "
-
-[node name="Timer" parent="UI" instance=ExtResource("9_xnixi")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -178.0
-offset_top = 5.0
-offset_bottom = 56.0
-grow_horizontal = 0
-grow_vertical = 1
-theme_override_font_sizes/font_size = 40
-text = "00:00:000"
 
 [node name="BG" type="ParallaxBackground" parent="."]
 

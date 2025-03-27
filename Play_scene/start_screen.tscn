@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://e7ro6aafkpc6"]
+[gd_scene load_steps=17 format=4 uid="uid://e7ro6aafkpc6"]
 
 [ext_resource type="Texture2D" uid="uid://dsuhfc1iygokd" path="res://Sprites/Background/awesomeCavePixelArt.png" id="1_1lvog"]
 [ext_resource type="Script" path="res://Play_scene/start_screen.gd" id="1_rhrgt"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c6b3hv554hsdo" path="res://Sprites/UI/Quit.png" id="13_6o4r4"]
 [ext_resource type="Texture2D" uid="uid://d4jaj52q8ng4f" path="res://Sprites/UI/Quit_Hover.png" id="14_kyhdx"]
 [ext_resource type="Texture2D" uid="uid://533fccj81pef" path="res://Sprites/UI/BB_Logo.png" id="15_6pyek"]
+[ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="16_7gr5x"]
 
 [node name="StartScreen" type="Node2D"]
 texture_filter = 1
@@ -167,6 +168,17 @@ stretch_mode = 0
 [node name="BbLogo" type="Sprite2D" parent="UI"]
 scale = Vector2(2.91, 2.91)
 texture = ExtResource("15_6pyek")
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -69.0
+offset_top = 70.0
+offset_right = 71.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("16_7gr5x")
+text = "made by: Im_EPA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Quit" to="." method="_on_quit_pressed"]

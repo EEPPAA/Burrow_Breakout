@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dngye375kknm4"]
+[gd_scene load_steps=33 format=3 uid="uid://dngye375kknm4"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_qruyg"]
 [ext_resource type="Texture2D" uid="uid://bt5r5vwpyqajk" path="res://Sprites/Player_Gardener/Climb/Smal_Gardener_Climb1.png" id="2_u1yol"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bor1xa5ugf854" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk4.png" id="16_bvl4f"]
 [ext_resource type="Texture2D" uid="uid://cm033iui2tykc" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk5.png" id="17_ihcke"]
 [ext_resource type="Texture2D" uid="uid://2dlrh3ve03hw" path="res://Sprites/Player_Gardener/Slippery/Smal_Gardener_Slippery-Sheet.png" id="21_bfcgv"]
+[ext_resource type="PackedScene" uid="uid://c7ccjl4xltyxh" path="res://Global/heart_container.tscn" id="22_kbaxj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b84av"]
 atlas = ExtResource("21_bfcgv")
@@ -258,7 +259,6 @@ target_position = Vector2(0, 18)
 collision_mask = 32
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 enabled = false
 zoom = Vector2(3.35, 3.35)
 process_callback = 0
@@ -266,6 +266,10 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 40.0
 rotation_smoothing_enabled = true
+
+[node name="Heart_container" parent="." instance=ExtResource("22_kbaxj")]
+offset_top = 40.0
+offset_bottom = 75.0
 
 [connection signal="body_entered" from="force_Crouch" to="." method="_on_force_crouch_body_entered"]
 [connection signal="body_exited" from="force_Crouch" to="." method="_on_force_crouch_body_exited"]

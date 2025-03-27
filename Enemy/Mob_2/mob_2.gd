@@ -175,10 +175,11 @@ func Area2dBlink():
 	$Detect_Player.set_deferred("monitoring",true)
 		
 func _on_hurt_box_body_entered(body):
+	
 	Player = body
-	Attack = false
 	body.jumpBuffer = false
 	body.Jump()
+	Attack = false
 	death()
 		
 func death():

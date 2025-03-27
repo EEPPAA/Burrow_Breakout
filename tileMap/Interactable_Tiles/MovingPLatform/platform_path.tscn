@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://1q0l68ebq0qr"]
 
 [ext_resource type="Script" path="res://tileMap/Interactable_Tiles/MovingPLatform/platform_follow.gd" id="1_hh2w1"]
+[ext_resource type="Script" path="res://tileMap/Interactable_Tiles/MovingPLatform/platform_path.gd" id="1_k3y8b"]
 
 [sub_resource type="Curve2D" id="Curve2D_4lwlv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 46, 8, 0, 0, 0, 0, 46, 139, 0, 0, 0, 0, 175, 139, 0, 0, 0, 0, 174, 10, 0, 0, 0, 0, 286, 11, 0, 0, 0, 0, 286, 138, 0, 0, 0, 0, 430, 139, 0, 0, 0, 0, 430, 21)
+"points": PackedVector2Array(0, 0, 0, 0, 93.4829, -159.869, 0, 0, 0, 0, -38.3076, -159.869)
 }
-point_count = 8
+point_count = 2
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hj0ru"]
 load_path = "res://.godot/imported/BurowBreakout_Moving PLat.png-7ba8025cd93a3be555ac37eb24d3c012.ctex"
@@ -14,16 +15,16 @@ load_path = "res://.godot/imported/BurowBreakout_Moving PLat.png-7ba8025cd93a3be
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqyqe"]
 size = Vector2(53, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxgiu"]
-size = Vector2(1, 6)
-
 [node name="PlatformPath" type="Path2D"]
 texture_filter = 1
-position = Vector2(287, 248)
+position = Vector2(285.531, 249.709)
+scale = Vector2(1.03194, 0.786325)
 curve = SubResource("Curve2D_4lwlv")
+script = ExtResource("1_k3y8b")
+speed = 0.3
 
 [node name="Platform_Follow" type="PathFollow2D" parent="."]
-position = Vector2(46, 8)
+position = Vector2(93.4829, -159.869)
 rotation = 1.5708
 rotates = false
 cubic_interp = false
@@ -39,9 +40,11 @@ rotation = -1.5708
 scale = Vector2(2.75, 0.65)
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-position = Vector2(46, 8)
+position = Vector2(93.4829, -159.869)
 rotation = 1.5708
 disable_mode = 2
+collision_layer = 2
+collision_mask = 2
 
 [node name="Node2D" type="Node2D" parent="AnimatableBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -77,20 +80,6 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_eqyqe")
 one_way_collision = true
 one_way_collision_margin = 128.0
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(5.9999, -26)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_vxgiu")
-one_way_collision_margin = 128.0
-debug_color = Color(0.787291, 0.102347, 1, 0.42)
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(6.00008, 25)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_vxgiu")
-one_way_collision_margin = 128.0
-debug_color = Color(0.787291, 0.102347, 1, 0.42)
 
 [connection signal="screen_entered" from="Platform_Follow/VisibleOnScreenNotifier2D" to="Platform_Follow" method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="Platform_Follow/VisibleOnScreenNotifier2D" to="Platform_Follow" method="_on_visible_on_screen_notifier_2d_screen_exited"]

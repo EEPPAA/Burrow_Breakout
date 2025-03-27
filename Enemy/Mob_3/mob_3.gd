@@ -51,6 +51,7 @@ func _physics_process(delta):
 	elif !isAlive:
 		movement = Vector2.ZERO
 		animation()
+		
 		pass
 	#print(speed)
 	
@@ -133,6 +134,7 @@ func _on_hurt_box_body_entered(body):
 	#Death
 	GlobalVar.Score += Points
 	$Score_Anim.text = str(Points)
+	
 	body.jumpBuffer = false
 	body.Jump()
 	$".".set_collision_layer_value(4,false)

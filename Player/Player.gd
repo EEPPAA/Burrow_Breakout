@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
-#Common Variables
+#common Var
 @export var HP : int
 @export var SPEED : float
 var reservedSPEED : float
 var isDead = false
+
+
+
+
 
 @export var JUMP_VELOCITY : float
 var reservedJUMP_VELOCITY : float
@@ -82,6 +86,10 @@ func _ready():
 	#Attack
 	Attck.spawnPosition = global_position
 	add_child(Attck)
+	
+	
+	
+	
 
 
 func _physics_process(delta):
@@ -178,6 +186,7 @@ func _physics_process(delta):
 		Death()
 		$Death.emitting = true
 		await $Death.finished
+		HP = 3
 		queue_free()
 
 
@@ -341,6 +350,7 @@ func _on_hurt_box_body_entered(body):
 	
 	anim.play("Hurt")
 	HP-=1
+	
 	await anim.animation_finished		
 	$HurtBox.set_deferred("monitoring",true)	
 	
@@ -376,5 +386,6 @@ func Death():
 	$Anim.hide()
 	$Body.disabled = true
 	$HurtBox.monitoring = false
+	
 	
 	

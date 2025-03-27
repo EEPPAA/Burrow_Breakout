@@ -13,6 +13,7 @@ script = ExtResource("1_yvku2")
 texture = ExtResource("1_4xblc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -13)
 zoom = Vector2(3.35, 3.35)
 process_callback = 0
 limit_smoothed = true

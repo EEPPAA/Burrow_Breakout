@@ -5,5 +5,5 @@
 [node name="Heart_container" type="HBoxContainer"]
 offset_right = 604.0
 offset_bottom = 35.0
-theme_override_constants/separation = 28
+theme_override_constants/separation = 40
 script = ExtResource("1_jelu0")

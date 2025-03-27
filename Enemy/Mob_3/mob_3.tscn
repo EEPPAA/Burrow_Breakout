@@ -161,6 +161,7 @@ size = Vector2(10, 5)
 texture_filter = 1
 collision_layer = 8
 collision_mask = 2
+floor_constant_speed = true
 script = ExtResource("1_cxkfa")
 speed = 25.0
 resPawnTimer = 3.0
@@ -209,8 +210,7 @@ position = Vector2(1, -8.5)
 shape = SubResource("RectangleShape2D_28lg0")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(11, 2)
+position = Vector2(14, 2)
 target_position = Vector2(0, 30)
 collision_mask = 2
 

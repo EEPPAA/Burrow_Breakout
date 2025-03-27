@@ -55,7 +55,7 @@ point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjjxj"]
 radius = 5.0
-height = 24.0
+height = 20.0
 
 [node name="Mob_1" type="CharacterBody2D"]
 texture_filter = 1
@@ -75,8 +75,8 @@ position = Vector2(-1.19209e-07, 0.5)
 scale = Vector2(1.5, 1.45)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-11, 0)
-target_position = Vector2(0, 28)
+position = Vector2(-10, 0)
+target_position = Vector2(0, 27)
 collision_mask = 2
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
