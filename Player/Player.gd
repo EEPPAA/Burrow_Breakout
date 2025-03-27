@@ -46,8 +46,8 @@ var isDamaged = false
 @onready var knockbacktimer = $knockback
 
 #attack
-@onready var Atkpreload = preload("res://Player/slash_attack.tscn")
-@onready var Attck = Atkpreload.instantiate()
+#@onready var Atkpreload = preload("res://Player/slash_attack.tscn")
+#@onready var Attck = Atkpreload.instantiate()
 
 #Climb var / Raycast
 @onready var RayCast_up : RayCast2D = $detect_up
@@ -84,8 +84,8 @@ func _ready():
 	$force_Crouch.monitoring = false
 	
 	#Attack
-	Attck.spawnPosition = global_position
-	add_child(Attck)
+	#Attck.spawnPosition = global_position
+	#add_child(Attck)
 	
 	
 	
@@ -347,10 +347,8 @@ func _on_hurt_box_body_entered(body):
 	velocity.y = knockBack
 	#knockbacktimer.start()
 	knockback_Func()
-	
 	anim.play("Hurt")
 	HP-=1
-	
 	await anim.animation_finished		
 	$HurtBox.set_deferred("monitoring",true)	
 	

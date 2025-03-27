@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://ckckpn0m1bvqc"]
+[gd_scene load_steps=10 format=4 uid="uid://ckckpn0m1bvqc"]
 
+[ext_resource type="Script" path="res://Main_scene/level_select.gd" id="1_rxe3g"]
 [ext_resource type="TileSet" uid="uid://bd7sk1o30q7b3" path="res://tileMap/Test_Tile_Set_1.tres" id="1_tdlxs"]
 [ext_resource type="Texture2D" uid="uid://dsuhfc1iygokd" path="res://Sprites/Background/awesomeCavePixelArt.png" id="2_5p8p7"]
 [ext_resource type="PackedScene" uid="uid://cpnut0p826n1" path="res://Enemy/Mob_3/mob_3.tscn" id="3_50okx"]
 [ext_resource type="PackedScene" uid="uid://bacy4xvcl8htm" path="res://Enemy/Mob_2/mob_2.tscn" id="4_whj6h"]
 [ext_resource type="PackedScene" uid="uid://bn2vf1nchwcwl" path="res://Enemy/Mob_1/mob_1.tscn" id="5_3e7hi"]
+[ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="6_ipwla"]
+[ext_resource type="Texture2D" uid="uid://b13kx563ytejh" path="res://Sprites/UI/Back.png" id="7_3gnfy"]
+[ext_resource type="Texture2D" uid="uid://cqjog0mesnlpe" path="res://Sprites/UI/BackHover.png" id="8_20eef"]
 
 [node name="Level_select" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_rxe3g")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_tdlxs")
@@ -82,3 +87,61 @@ position = Vector2(-184, -126)
 
 [node name="Mob_14" parent="Mobs" instance=ExtResource("3_50okx")]
 position = Vector2(75, -114)
+
+[node name="Buttons" type="Control" parent="."]
+z_index = -2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level_1" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -289.0
+offset_top = 75.0
+offset_right = 288.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("6_ipwla")
+text = "Level 1"
+
+[node name="Level_2" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -289.0
+offset_top = 4.0
+offset_right = 288.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("6_ipwla")
+text = "Level 2"
+
+[node name="Level_3" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -289.0
+offset_top = -78.0
+offset_right = 288.0
+theme_override_fonts/font = ExtResource("6_ipwla")
+text = "Level 3"
+
+[node name="Level_4" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = -289.0
+offset_top = -167.0
+offset_right = 288.0
+offset_bottom = -89.0
+theme_override_fonts/font = ExtResource("6_ipwla")
+text = "Level 4"
+
+[node name="Back" type="TextureButton" parent="Buttons"]
+z_index = 4
+layout_mode = 0
+offset_left = -284.0
+offset_top = -158.0
+offset_right = -242.0
+offset_bottom = -116.0
+texture_normal = ExtResource("7_3gnfy")
+texture_hover = ExtResource("8_20eef")
+
+[connection signal="pressed" from="Buttons/Level_1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Buttons/Level_2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Buttons/Level_3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Buttons/Level_4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Buttons/Back" to="." method="_on_back_pressed"]

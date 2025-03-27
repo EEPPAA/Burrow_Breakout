@@ -223,7 +223,6 @@ shape = SubResource("CapsuleShape2D_3cc2n")
 debug_color = Color(0.874883, 0.344957, 3.85046e-07, 0.42)
 
 [node name="CrouchedHbox" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 shape = SubResource("CapsuleShape2D_8hi6v")
 debug_color = Color(0.842832, 0.00107274, 0.916711, 0.42)
 

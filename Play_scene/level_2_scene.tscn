@@ -183,7 +183,6 @@ offset_bottom = 81.0
 [node name="Player" parent="Player_Slot" instance=ExtResource("7_8fcgg")]
 
 [node name="BG" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="AwesomeCavePixelArt" type="Sprite2D" parent="BG"]
 position = Vector2(554, 326)
@@ -356,6 +355,4 @@ collision_layer = 0
 position = Vector2(4319, -743)
 shape = SubResource("RectangleShape2D_vdyfe")
 
-[connection signal="body_entered" from="Tiles/Interactables/Checkpoint" to="Tiles/Interactables/Checkpoint" method="_on_body_entered"]
-[connection signal="body_entered" from="Tiles/Interactables/@Area2D@21980" to="Tiles/Interactables/@Area2D@21980" method="_on_body_entered"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
