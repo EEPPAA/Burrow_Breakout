@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var spawnPos : Vector2
 var isAlive:bool = true
 @export var speed : float
 var reservedSpeed: float
@@ -20,6 +21,7 @@ var Chasing:bool = false
 
 
 func _ready():
+	spawnPos = global_position
 	reservedSpeed = speed
 	anim.play("Walk")
 	if ranMove == 0:
@@ -171,3 +173,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	$AnimatedSprite2D.visible = false
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	$AnimatedSprite2D.visible = true
+
+
+func _on_respawn_body_entered(body):
+	global_position = spawnPos

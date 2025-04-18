@@ -38,7 +38,7 @@ point_count = 2
 
 [node name="Mob_2_Projectile" type="CharacterBody2D"]
 texture_filter = 1
-collision_layer = 16
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_ljo7w")
 speed = 100.0

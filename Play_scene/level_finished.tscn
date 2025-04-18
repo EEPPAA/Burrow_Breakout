@@ -10,7 +10,6 @@
 [ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="5_ww4pm"]
 
 [node name="Level_Finished" type="Control"]
-process_mode = 3
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -21,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_rmxi2")
 
 [node name="Main_Menu" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 248.0
 offset_top = 355.0
@@ -54,6 +54,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Next_Level" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 0
 offset_left = 594.0
 offset_top = 355.0

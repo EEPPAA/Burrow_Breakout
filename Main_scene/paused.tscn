@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8u8n7m0j56lw"]
+
+[ext_resource type="Script" path="res://Main_scene/paused.gd" id="1_r4rrl"]
+[ext_resource type="Texture2D" uid="uid://bo0q46xgoxe1x" path="res://Sprites/UI/Layooyut.png" id="2_nqcs1"]
+[ext_resource type="FontFile" uid="uid://dme8tavkxt2is" path="res://Fonts/Daydream.ttf" id="3_ecujb"]
+[ext_resource type="Texture2D" uid="uid://ccdp1lijrr26t" path="res://Sprites/UI/Border.png" id="4_m33i5"]
+[ext_resource type="Texture2D" uid="uid://b5aw4c50avpne" path="res://Sprites/UI/Border_Hovber.png" id="5_5idnh"]
+[ext_resource type="Texture2D" uid="uid://bkh6nwovo701c" path="res://Sprites/Background/ffade.png" id="6_awpdx"]
+
+[node name="Paused" type="Control"]
+process_mode = 2
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_r4rrl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1.9, 1.9875)
+texture = ExtResource("2_nqcs1")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.842
+offset_top = -78.4906
+offset_right = -62.8421
+offset_bottom = -37.4906
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.992157, 0.764706, 0.12549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_colors/font_outline_color = Color(0.572549, 0.313726, 0.109804, 1)
+theme_override_constants/shadow_offset_x = -7
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_ecujb")
+theme_override_font_sizes/font_size = 30
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -244.0
+offset_top = -14.0
+offset_right = -15.0
+offset_bottom = 79.0
+texture_normal = ExtResource("4_m33i5")
+texture_pressed = ExtResource("5_5idnh")
+texture_hover = ExtResource("5_5idnh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Quit"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -36.5
+offset_right = 250.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.992157, 0.764706, 0.12549, 1)
+theme_override_colors/font_outline_color = Color(0.572549, 0.313726, 0.109804, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_ecujb")
+theme_override_font_sizes/font_size = 25
+text = "quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -14.0
+offset_right = 248.0
+offset_bottom = 79.0
+texture_normal = ExtResource("4_m33i5")
+texture_pressed = ExtResource("5_5idnh")
+texture_hover = ExtResource("5_5idnh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Continue"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -17.0
+offset_right = 89.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.992157, 0.764706, 0.12549, 1)
+theme_override_colors/font_outline_color = Color(0.572549, 0.313726, 0.109804, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_ecujb")
+theme_override_font_sizes/font_size = 25
+text = "Conitue"
+
+[node name="Ffade" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(16.4999, 22)
+scale = Vector2(1.94531, 0.777083)
+texture = ExtResource("6_awpdx")
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]

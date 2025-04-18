@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c05hspy3feqrr"]
+[gd_scene load_steps=20 format=4 uid="uid://c05hspy3feqrr"]
 
 [ext_resource type="Script" path="res://Test_scenes/Player_Respawn.gd" id="1_uqyh7"]
 [ext_resource type="TileSet" uid="uid://bd7sk1o30q7b3" path="res://tileMap/Test_Tile_Set_1.tres" id="2_c87y1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c7ccjl4xltyxh" path="res://Global/heart_container.tscn" id="10_xf4bf"]
 [ext_resource type="PackedScene" uid="uid://dr1vlh8tekqg7" path="res://Play_scene/level_finished.tscn" id="11_hl1ms"]
 [ext_resource type="Texture2D" uid="uid://cx7as757liqo3" path="res://Sprites/UI/black.png" id="12_hav1r"]
+[ext_resource type="PackedScene" uid="uid://c8u8n7m0j56lw" path="res://Main_scene/paused.tscn" id="15_tu25d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji77w"]
 size = Vector2(54, 42.5)
@@ -58,8 +59,8 @@ _data = {
 [node name="Level_1_scene" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_uqyh7")
-metadata/_edit_horizontal_guides_ = [-740.0]
-metadata/_edit_vertical_guides_ = [170.0]
+metadata/_edit_horizontal_guides_ = [-749.0, -1056.0]
+metadata/_edit_vertical_guides_ = [179.0]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -114,6 +115,18 @@ offset_top = 46.0
 offset_right = 607.0
 offset_bottom = 81.0
 
+[node name="Centered" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Paused" parent="UI/Centered" instance=ExtResource("15_tu25d")]
+visible = false
+z_index = 2
+layout_direction = 1
+layout_mode = 1
+
 [node name="Cave" type="TileMap" parent="."]
 tile_set = ExtResource("2_c87y1")
 format = 2
@@ -137,6 +150,8 @@ tile_map_data = PackedByteArray("AADz/7v/AwAAAAIAAADz/7r/AwAAAAAAAADz/7z/AwAAAAE
 tile_set = ExtResource("2_c87y1")
 
 [node name="Foreground" type="TileMapLayer" parent="Cave"]
+tile_map_data = PackedByteArray("AAAFAP//AAABAAAAAAAEAP//AAAGAAAAAAARAAAAAAAGAAAAAAASAAAAAAABAAAAAAAeAAAAAAAFAAAAAAAkAAAAAAAAAAAAAAAjAAAAAAAFAAAAAAAuAPz/AAABAAAAAAAvAPz/AAAFAAAAAAA8APr/AAADAAAAAAA7APr/AAACAAAAAAA6APr/AAAAAAAAAABOAP7/AAADAAAAAABNAP7/AAABAAAAAABLAP7/AAAGAAAAAABGAP7/AAAFAAAAAABeAPr/AAAFAAAAAABfAPr/AAACAAAAAAB6APX/AAAFAAAAAAB7APX/AAAHAAAAAACLAPL/AAADAAAAAACIAPL/AAABAAAAAACMAPL/AAAAAAAAAACbAPH/AAAHAAAAAACaAPH/AAABAAAAAACZAPH/AAAHAAAAAAC2APT/AAAAAAAAAAC1APT/AAAFAAAAAACuAPT/AAAAAAAAAADBAPT/AAAFAAAAAADCAPT/AAAGAAAAAADHAPL/AAAFAAAAAADIAPL/AAACAAAAAADNAPD/AAAAAAAAAADMAPD/AAABAAAAAADUAO7/AAAGAAAAAADVAO7/AAAFAAAAAADkAOz/AAABAAAAAAD6AOn/AAACAAAAAAABAej/AAAHAAAAAAAOAef/AAAGAAAAAAANAef/AAAAAAAAAAAMAef/AAAGAAAAAAAsAeX/AAAGAAAAAAAiAeX/AAAHAAAAAAAkAeX/AAAHAAAAAAAlAeX/AAACAAAAAAAxAeX/AAAGAAAAAAAwAeX/AAACAAAAAABIAeL/AAAAAAAAAABHAeL/AAAFAAAAAABdAeP/AAAFAAAAAABeAeP/AAAGAAAAAABsAdD/AAADAAAAAABtAdD/AAAAAAAAAABlAc7/AAABAAAAAABkAc7/AAADAAAAAABYAcX/AAAFAAAAAABXAcX/AAAAAAAAAABbAcX/AAABAAAAAABSAcX/AAABAAAAAAAZAcf/AAABAAAAAAAVAcf/AAACAAAAAAAXAcf/AAAGAAAAAAALAdP/AAABAAAAAAARAdP/AAADAAAAAAASAdP/AAAHAAAAAADDANP/AAAAAAAAAADAANL/AAAAAAAAAAC2ANT/AAAGAAAAAAC7ANT/AAADAAAAAAC6ANT/AAAHAAAAAACqANX/AAAFAAAAAACgANf/AAAFAAAAAACfANf/AAACAAAAAACeANf/AAAGAAAAAACTANr/AAAAAAAAAACDANj/AAAAAAAAAACEANj/AAAFAAAAAACHANj/AAAGAAAAAACIANj/AAABAAAAAAB2ANj/AAAFAAAAAAB3ANj/AAABAAAAAAB4ANj/AAAAAAAAAABrANj/AAADAAAAAABqANj/AAACAAAAAABaAN3/AAACAAAAAABeANz/AAAHAAAAAABgANz/AAAHAAAAAAAZANb/AAAFAAAAAAAYANb/AAAHAAAAAAAaANb/AAAHAAAAAAAKANT/AAAHAAAAAAAOANX/AAACAAAAAAA=")
+tile_set = ExtResource("2_c87y1")
 
 [node name="BackGround" type="TileMapLayer" parent="Cave"]
 
@@ -227,11 +242,11 @@ position = Vector2(-177, -1054)
 shape = SubResource("RectangleShape2D_ji77w")
 
 [node name="Ending" type="ParallaxBackground" parent="."]
-process_mode = 3
 layer = 1
 visible = false
 
 [node name="Level_Finished" parent="Ending" instance=ExtResource("11_hl1ms")]
+next_LVL = "res://Play_scene/level_2_scene.tscn"
 
 [node name="Black" type="Sprite2D" parent="Ending"]
 modulate = Color(1, 1, 1, 0)
@@ -245,4 +260,7 @@ libraries = {
 "": SubResource("AnimationLibrary_qsq5i")
 }
 
+[connection signal="body_entered" from="Cave/Interactables/Checkpoint" to="Cave/Interactables/Checkpoint" method="_on_body_entered"]
+[connection signal="body_entered" from="Cave/Interactables/@Area2D@20570" to="Cave/Interactables/@Area2D@20570" method="_on_body_entered"]
+[connection signal="body_entered" from="Cave/Interactables/@Area2D@20618" to="Cave/Interactables/@Area2D@20618" method="_on_body_entered"]
 [connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]

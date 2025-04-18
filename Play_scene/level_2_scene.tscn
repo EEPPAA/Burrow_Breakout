@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://bjafcpiudybas"]
+[gd_scene load_steps=32 format=4 uid="uid://bjafcpiudybas"]
 
 [ext_resource type="Script" path="res://Test_scenes/Player_Respawn.gd" id="1_0dy5s"]
 [ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="1_17c4d"]
 [ext_resource type="Script" path="res://Test_scenes/label.gd" id="2_rqm43"]
+[ext_resource type="PackedScene" uid="uid://c8u8n7m0j56lw" path="res://Main_scene/paused.tscn" id="2_tt0yi"]
 [ext_resource type="PackedScene" uid="uid://cqfwjufb404pk" path="res://Global/score.tscn" id="3_nko8k"]
 [ext_resource type="PackedScene" uid="uid://bprxw4rvh73ux" path="res://Global/timer.tscn" id="4_bn5ab"]
 [ext_resource type="PackedScene" uid="uid://c7ccjl4xltyxh" path="res://Global/heart_container.tscn" id="5_mclnu"]
@@ -121,7 +122,6 @@ size = Vector2(54, 42.5)
 texture_filter = 1
 script = ExtResource("1_0dy5s")
 metadata/_edit_vertical_guides_ = [2786.0, 3090.0, 4261.0]
-metadata/_edit_horizontal_guides_ = [-420.0, -283.0]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -176,6 +176,18 @@ offset_top = 46.0
 offset_right = 607.0
 offset_bottom = 81.0
 
+[node name="Centered" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="Paused" parent="UI/Centered" instance=ExtResource("2_tt0yi")]
+visible = false
+z_index = 2
+layout_direction = 1
+layout_mode = 1
+
 [node name="Player_Slot" type="Node2D" parent="."]
 
 [node name="CameraMan" parent="Player_Slot" instance=ExtResource("6_5hhdp")]
@@ -194,6 +206,7 @@ layer = 1
 visible = false
 
 [node name="Level_Finished" parent="Ending" instance=ExtResource("9_pkpiq")]
+next_LVL = "res://Play_scene/level_3_scene.tscn"
 
 [node name="Black" type="Sprite2D" parent="Ending"]
 modulate = Color(1, 1, 1, 0)
@@ -225,6 +238,7 @@ tile_map_data = PackedByteArray("AAAuAAEAAAAFAAgAAAArAAEAAAAHAAgAAAAtAAEAAAAGAAg
 tile_set = ExtResource("11_moum4")
 
 [node name="Foreground" type="TileMapLayer" parent="Tiles"]
+tile_map_data = PackedByteArray("AAAmAPz/AAACAAAAAAAoAPz/AAAGAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAA8AP7/AAACAAAAAABGAP3/AAACAAAAAABIAP3/AAAFAAAAAABHAP3/AAAGAAAAAABcAP7/AAAAAAAAAABeAP7/AAACAAAAAACAAP3/AAAAAAAAAAB/AP3/AAAFAAAAAACBAP3/AAAHAAAAAABVAOz/AAAHAAAAAABUAOz/AAACAAAAAABTAOz/AAADAAAAAABKAOz/AAACAAAAAABeAN//AAACAAAAAACqAOb/AAABAAAAAACqAPf/AAAFAAAAAACpAPf/AAAGAAAAAACoAPf/AAADAAAAAAC2AAAAAAAGAAAAAADCAOb/AAACAAAAAADAAOb/AAAHAAAAAAAHAe//AAADAAAAAAAIAe//AAACAAAAAAAJAe//AAAGAAAAAAAKAe//AAABAAAAAAA=")
 tile_set = ExtResource("11_moum4")
 
 [node name="Interactables" type="TileMapLayer" parent="Tiles"]

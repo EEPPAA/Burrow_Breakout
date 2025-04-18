@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bn2vf1nchwcwl"]
+[gd_scene load_steps=15 format=3 uid="uid://bn2vf1nchwcwl"]
 
 [ext_resource type="Script" path="res://Enemy/Mob_1/mob_1.gd" id="1_h8y8a"]
 [ext_resource type="Texture2D" uid="uid://c2ncl5n4bqmp1" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-1.png" id="1_nn2eq"]
@@ -56,6 +56,9 @@ point_count = 2
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjjxj"]
 radius = 5.0
 height = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0ltv"]
+size = Vector2(17, 3.5)
 
 [node name="Mob_1" type="CharacterBody2D"]
 texture_filter = 1
@@ -139,6 +142,15 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = ""
+
+[node name="Respawn" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn"]
+position = Vector2(-0.5, 10.25)
+shape = SubResource("RectangleShape2D_a0ltv")
+debug_color = Color(0.493472, 0.583369, 5.77569e-07, 0.42)
 
 [connection signal="body_entered" from="Wall_Detect" to="." method="_on_wall_detect_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

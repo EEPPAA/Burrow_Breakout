@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cpnut0p826n1"]
+[gd_scene load_steps=37 format=3 uid="uid://cpnut0p826n1"]
 
 [ext_resource type="Script" path="res://Enemy/Mob_3/mob_3.gd" id="1_cxkfa"]
 [ext_resource type="Texture2D" uid="uid://cqnqcyqx4aimq" path="res://Sprites/Place_Holder/Enemy/Skeleton/Skeleton-Death/skeleton_Death1.png" id="2_th1al"]
@@ -36,7 +36,7 @@ radius = 26.0
 height = 230.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bjow"]
-size = Vector2(18.5, 5.25)
+size = Vector2(16.3929, 5.25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_66i8l"]
 animations = [{
@@ -157,6 +157,9 @@ height = 22.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28lg0"]
 size = Vector2(10, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrbsk"]
+size = Vector2(12, 3)
+
 [node name="Mob_3" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 8
@@ -183,11 +186,13 @@ shape = SubResource("CapsuleShape2D_vu386")
 debug_color = Color(0.797335, 0.00189173, 0.956582, 0.419608)
 
 [node name="Wall_Detect" type="Area2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(1.12, 1)
 collision_layer = 0
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Detect"]
-position = Vector2(0, 9)
+position = Vector2(-0.892857, 7)
 shape = SubResource("RectangleShape2D_6bjow")
 debug_color = Color(0.661743, 0.513752, 7.70092e-07, 0.42)
 
@@ -197,7 +202,6 @@ sprite_frames = SubResource("SpriteFrames_66i8l")
 animation = &"Dead"
 
 [node name="Body" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_ppvvr")
 
@@ -210,8 +214,8 @@ position = Vector2(1, -8.5)
 shape = SubResource("RectangleShape2D_28lg0")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(14, 2)
-target_position = Vector2(0, 30)
+position = Vector2(7, 2)
+target_position = Vector2(0, 29)
 collision_mask = 2
 
 [node name="Score_Anim" parent="." instance=ExtResource("30_qq6sa")]
@@ -229,9 +233,19 @@ grow_horizontal = 2
 grow_vertical = 2
 text = ""
 
+[node name="Respawn" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn"]
+position = Vector2(-1, 15.5)
+shape = SubResource("RectangleShape2D_hrbsk")
+debug_color = Color(0.607823, 0.540054, 1.92523e-07, 0.42)
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="body_entered" from="Player_Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="Player_Detect" to="." method="_on_player_detect_body_exited"]
 [connection signal="body_entered" from="Wall_Detect" to="." method="_on_wall_detect_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="Respawn" to="." method="_on_respawn_body_entered"]
