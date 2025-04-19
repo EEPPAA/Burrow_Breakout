@@ -13,6 +13,7 @@ var isDead = false
 @export var JUMP_VELOCITY : float
 var reservedJUMP_VELOCITY : float
 @onready var anim = get_node("Anim")
+@onready var flash = $Flash
 var direction : Vector2= Vector2.ZERO
 
 #Acceleraton & Friction
@@ -82,6 +83,7 @@ func _ready():
 	#Disables the crouch so the player is standing at the start.
 	$Crouched.disabled = true
 	$force_Crouch.monitoring = false
+	
 	
 	#Attack
 	#Attck.spawnPosition = global_position
@@ -178,6 +180,7 @@ func _physics_process(delta):
 				isClimbing = false
 			
 		
+			
 		move_and_slide()
 		
 			
@@ -186,6 +189,7 @@ func _physics_process(delta):
 		Death()
 		$Death.emitting = true
 		await $Death.finished
+		
 		HP = 3
 		queue_free()
 
@@ -193,6 +197,7 @@ func _physics_process(delta):
 func Falling(delta):
 	#fall logic
 	if is_on_floor():  # Check if the character is on the ground
+		
 		coyote_timer = coyote_time  # Reset the timer when on the ground
 		is_on_ground = true
 		Slippery = false
@@ -212,6 +217,9 @@ func Falling(delta):
 
 #Jump Functions	
 func Jump():		
+	AudioManager.Jump.pitch_scale = (randf_range(0.75,1))
+	#print(AudioManager.Jump.pitch_scale)
+	AudioManager.Jump.play()
 	velocity.y = JUMP_VELOCITY
 	is_on_ground = false
 func jumpBuffTimeout():
@@ -340,21 +348,29 @@ func _on_force_crouch_body_exited(body):
 
 
 func _on_hurt_box_body_entered(body):
-	$HurtBox.set_deferred("monitoring",false)
+	#SFX
+	if HP > 1:
+		AudioManager.Hurt.pitch_scale = (randf_range(0.75,1.1))
+		AudioManager.Hurt.play()
+	if HP <= 1:
+		AudioManager.Death.pitch_scale = (randf_range(0.75,1))
+		AudioManager.Death.play()
 	
+	#knockback effect
+	$HurtBox.set_deferred("monitoring",false)
 	SPEED = 0
 	isClimbing = false
 	velocity.y = knockBack
 	#knockbacktimer.start()
 	knockback_Func()
+	flash.play("Hurt")
 	anim.play("Hurt")
 	HP-=1
-	await anim.animation_finished		
-	$HurtBox.set_deferred("monitoring",true)	
-	
-	#knockbacktimer.stop()
-	
+	await get_tree().create_timer(.4).timeout
+	flash.stop()
+	$HurtBox.set_deferred("monitoring",true)
 	SPEED = reservedSPEED
+	
 	
 	
 func knockback_Func():
@@ -379,11 +395,14 @@ func knockback_Func():
 		#SPEED = 0
 
 func Death():
+	
 	GlobalVar.Score = 0
 	isDead=true
 	$Anim.hide()
 	$Body.disabled = true
 	$HurtBox.monitoring = false
+	
+		
 	
 	
 	

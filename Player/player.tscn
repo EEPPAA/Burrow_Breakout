@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://dngye375kknm4"]
+[gd_scene load_steps=37 format=3 uid="uid://dngye375kknm4"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_qruyg"]
+[ext_resource type="Shader" path="res://Player/player.gdshader" id="2_3l6b7"]
 [ext_resource type="Texture2D" uid="uid://bt5r5vwpyqajk" path="res://Sprites/Player_Gardener/Climb/Smal_Gardener_Climb1.png" id="2_u1yol"]
 [ext_resource type="Texture2D" uid="uid://bixtjm3pvpwb6" path="res://Sprites/Player_Gardener/Crouch/Smal_Gardener_Crouch1.png" id="2_x3m5e"]
 [ext_resource type="Texture2D" uid="uid://bknu6xnqhduh" path="res://Sprites/Player_Gardener/Climb/Smal_Gardener_Climb2.png" id="3_p4rsg"]
@@ -21,6 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://bor1xa5ugf854" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk4.png" id="16_bvl4f"]
 [ext_resource type="Texture2D" uid="uid://cm033iui2tykc" path="res://Sprites/Player_Gardener/Walk/Smol_Gardener_Walk5.png" id="17_ihcke"]
 [ext_resource type="Texture2D" uid="uid://2dlrh3ve03hw" path="res://Sprites/Player_Gardener/Slippery/Smal_Gardener_Slippery-Sheet.png" id="21_bfcgv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0red"]
+shader = ExtResource("2_3l6b7")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b84av"]
 atlas = ExtResource("21_bfcgv")
@@ -172,6 +178,44 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.994536)
 colors = PackedColorArray(1, 0.765901, 0.727378, 1, 0.884314, 3.20069e-06, 1.15514e-06, 1)
 
+[sub_resource type="Animation" id="Animation_im03g"]
+resource_name = "Hurt"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uoc03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgv1h"]
+_data = {
+"Hurt": SubResource("Animation_im03g"),
+"RESET": SubResource("Animation_uoc03")
+}
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_mask = 11
@@ -190,10 +234,11 @@ knockBack = -200
 knockBack_x = 1.5
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_t0red")
 position = Vector2(-1, -5)
 scale = Vector2(1.1875, 1.21053)
 sprite_frames = SubResource("SpriteFrames_lhmt2")
-animation = &"Run"
+animation = &"Jump"
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -265,6 +310,12 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 40.0
 rotation_smoothing_enabled = true
+
+[node name="Flash" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_xgv1h")
+}
 
 [connection signal="body_entered" from="force_Crouch" to="." method="_on_force_crouch_body_entered"]
 [connection signal="body_exited" from="force_Crouch" to="." method="_on_force_crouch_body_exited"]

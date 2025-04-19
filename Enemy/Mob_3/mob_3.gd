@@ -134,9 +134,14 @@ func _on_player_detect_body_exited(body):
 
 func _on_hurt_box_body_entered(body):
 	#Death
+	AudioManager.skele_death.pitch_scale = (randf_range(0.8,1.1))
+	AudioManager.skele_death.play()
+	
+	
+	AudioManager.scored.pitch_scale = (randf_range(0.75,1))
+	AudioManager.scored.play()
 	GlobalVar.Score += Points
 	$Score_Anim.text = str(Points)
-	
 	body.jumpBuffer = false
 	body.Jump()
 	$".".set_collision_layer_value(4,false)

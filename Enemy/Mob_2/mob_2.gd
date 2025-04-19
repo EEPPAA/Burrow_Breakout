@@ -114,6 +114,7 @@ func Facing():
 
 
 func _on_detect_player_body_entered(body):
+	
 	movement = Vector2.ZERO
 	Playerpos = body.global_position.x
 	A2dPos = $Detect_Player.global_position.x
@@ -129,6 +130,8 @@ func _on_detect_player_body_entered(body):
 		
 		Attack = true
 		if Attack && isAlive:
+			AudioManager.fireball_2.pitch_scale = (randf_range(0.8,0.9))
+			AudioManager.fireball_2.play()
 			anim.play("Attack")
 			await anim.animation_finished
 			#print("Finna fire")
@@ -150,6 +153,8 @@ func _on_detect_player_body_entered(body):
 		Attack = true
 	
 		if Attack && isAlive:
+			AudioManager.fireball_2.pitch_scale = (randf_range(0.8,0.9))
+			AudioManager.fireball_2.play()
 			anim.play("Attack")
 			await anim.animation_finished
 			#print("Finna fire")
@@ -183,7 +188,8 @@ func _on_hurt_box_body_entered(body):
 	death()
 		
 func death():
-	
+	AudioManager.scored.pitch_scale = (randf_range(0.75,1))
+	AudioManager.scored.play()
 	GlobalVar.Score += Points
 	isAlive = false
 	canAttack = false

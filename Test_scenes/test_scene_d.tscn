@@ -122,9 +122,6 @@ position = Vector2(2197, -1017)
 [node name="Mob_12" parent="Normal_Mobs" instance=ExtResource("4_irjo0")]
 position = Vector2(2469, -1018)
 
-[node name="Mob_13" parent="Normal_Mobs" instance=ExtResource("4_irjo0")]
-position = Vector2(131, -47)
-
 [node name="Projectile_Mobs" type="Node2D" parent="."]
 
 [node name="Mob_4" parent="Projectile_Mobs" instance=ExtResource("6_uknno")]
@@ -167,7 +164,7 @@ position = Vector2(439, -748)
 position = Vector2(4123, -1164)
 
 [node name="Mob_15" parent="Projectile_Mobs" instance=ExtResource("6_uknno")]
-position = Vector2(203, -48)
+position = Vector2(175, -65)
 
 [node name="Undead_Mobs" type="Node2D" parent="."]
 
@@ -198,9 +195,6 @@ position = Vector2(3095, -1761)
 [node name="Mob_15" parent="Undead_Mobs" instance=ExtResource("7_4wou6")]
 position = Vector2(2710, -1731)
 
-[node name="Mob_4" parent="Undead_Mobs" instance=ExtResource("7_4wou6")]
-position = Vector2(72, -54)
-
 [node name="Shop" parent="." instance=ExtResource("8_i4ir5")]
 position = Vector2(193, -45)
 
@@ -208,6 +202,7 @@ position = Vector2(193, -45)
 z_index = -5
 
 [node name="Bg2" type="Sprite2D" parent="Backgroun"]
+visible = false
 position = Vector2(37.5, -74.5)
 scale = Vector2(2.4875, 6.79687)
 texture = ExtResource("13_re11v")

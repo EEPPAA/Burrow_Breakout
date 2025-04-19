@@ -6,7 +6,7 @@ var isPaused : bool = false
 func _ready():
 	GlobalVar.Score = 0
 	
-	GlobalVar.Deathcount -= 1
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

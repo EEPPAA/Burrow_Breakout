@@ -8,7 +8,9 @@ var direction : Vector2
 var wallHit : bool
 var bounce:int
 @onready var rayCast : RayCast2D = $RayCast2D
-
+var explosion = false
+var explosive =  false
+var playSFX : int = 0
 
 var spawnPos : Vector2
 
@@ -36,33 +38,50 @@ func _physics_process(delta):
 		
 		#print("on floor")
 		velocity.y = JUMP_VELOCITY
-		if bounce > 3:
+		if bounce > 5:
+			
+			
 			explode()
 	elif !is_on_floor():
+		
 		velocity.y += gravity * delta
+		
 	if is_on_wall():
+		
 		explode()
 	
 	if bounce > 4 && is_on_ceiling():
+		
 		explode()
 	
 	
 func Phaser():
 	if tileValue == 5:
-		global_position.y += 3
+		global_position.y += 5
 	
 
 
 	
 func explode():
+	
+	if playSFX == 0:
+		playSFX += 1
+		AudioManager.fire_bounce.pitch_scale = (randf_range(0.6,1))
+		AudioManager.fire_bounce.play()	
+		
+	
+		
 	$Death.emitting = true
 	$".".set_collision_layer_value(5,false)
 	$AnimatedSprite2D.visible = false
 	await $Death.finished
 	queue_free()
 func _on_area_2d_body_entered(body):
-	if tileValue == 5:
+	if tileValue != 5:
 		bounce += 1
+		
+	
+			
 	else: return
 
 	
@@ -82,7 +101,9 @@ func tileDetector():
 					
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	$AnimatedSprite2D.show()
+	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	$AnimatedSprite2D.hide()
+	

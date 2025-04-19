@@ -93,6 +93,8 @@ func _on_wall_detect_body_entered(body):
 		
 func death():
 	GlobalVar.Score += Points
+	AudioManager.scored.pitch_scale = (randf_range(0.75,1))
+	AudioManager.scored.play()
 	#print(GlobalVar.Score)
 	isAlive = false
 	$".".set_collision_layer_value(4,false)
