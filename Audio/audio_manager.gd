@@ -11,5 +11,6 @@ extends Node
 @onready var fire_bounce = $sfx/FireBounce
 @onready var Crmble = $"sfx/Crumbling-SoundEffect"
 #Music 
-@onready var BGM_1 = $"music/Bgm-RockyCeiling"
-@onready var BGM_2 = $"music/PausedTheme-Tranquil"
+@onready var BGM_1 = $"music/16-bitCave"
+@onready var BGM_2 = $"music/Bgm-RockyCeiling"
+@onready var BGM_3 = $"music/PausedTheme-Tranquil"

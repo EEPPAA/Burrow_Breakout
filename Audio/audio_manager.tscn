@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4s4u67ieyi20"]
+[gd_scene load_steps=15 format=3 uid="uid://c4s4u67ieyi20"]
 
 [ext_resource type="AudioStream" uid="uid://1u5tvu6e80ob" path="res://SFX/Death.wav" id="1_m5nhp"]
 [ext_resource type="Script" path="res://Audio/audio_manager.gd" id="1_nb7ct"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://roayu4ry31ju" path="res://SFX/Fire_bounce.wav" id="10_lpvq0"]
 [ext_resource type="AudioStream" uid="uid://bnb2568ianjxe" path="res://Audio/Music/paused theme - tranquil.wav" id="10_qr0xn"]
 [ext_resource type="AudioStream" uid="uid://cwcvjxq2jgvld" path="res://SFX/Crumbling - Sound effect.mp3" id="11_cggv6"]
+[ext_resource type="AudioStream" uid="uid://c57s85vvp8xqe" path="res://Audio/Music/16-Bit Cave.mp3" id="14_3eunh"]
 
 [node name="audioManager" type="Node"]
 script = ExtResource("1_nb7ct")
@@ -25,7 +26,7 @@ volume_db = -5.0
 
 [node name="EnemyDeath" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("2_u135b")
-volume_db = -5.0
+volume_db = -12.0
 
 [node name="Fireball" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("3_ribln")
@@ -34,7 +35,7 @@ pitch_scale = 2.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("4_iisr2")
-volume_db = -12.0
+volume_db = -15.0
 
 [node name="Hurt" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_b18sa")
@@ -62,8 +63,16 @@ volume_db = -25.0
 [node name="music" type="Node" parent="."]
 
 [node name="Bgm-RockyCeiling" type="AudioStreamPlayer" parent="music"]
+process_mode = 3
 stream = ExtResource("9_iai35")
 volume_db = -25.0
 
 [node name="PausedTheme-Tranquil" type="AudioStreamPlayer" parent="music"]
+process_mode = 3
 stream = ExtResource("10_qr0xn")
+volume_db = -20.0
+
+[node name="16-bitCave" type="AudioStreamPlayer" parent="music"]
+process_mode = 3
+stream = ExtResource("14_3eunh")
+volume_db = -20.0

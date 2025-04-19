@@ -1,7 +1,6 @@
 [gd_scene load_steps=33 format=4 uid="uid://btnnc2aluy20v"]
 
 [ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="1_t73wp"]
-[ext_resource type="Script" path="res://Test_scenes/Player_Respawn.gd" id="1_w4xkn"]
 [ext_resource type="Script" path="res://Test_scenes/label.gd" id="2_wqh44"]
 [ext_resource type="PackedScene" uid="uid://cqfwjufb404pk" path="res://Global/score.tscn" id="3_76vxx"]
 [ext_resource type="PackedScene" uid="uid://bprxw4rvh73ux" path="res://Global/timer.tscn" id="4_ebra4"]
@@ -18,6 +17,51 @@
 [ext_resource type="PackedScene" uid="uid://1q0l68ebq0qr" path="res://tileMap/Interactable_Tiles/MovingPLatform/platform_path.tscn" id="14_8a6qi"]
 [ext_resource type="PackedScene" uid="uid://cpnut0p826n1" path="res://Enemy/Mob_3/mob_3.tscn" id="14_yulyb"]
 [ext_resource type="Script" path="res://tileMap/Interactable_Tiles/MovingPLatform/platform_follow.gd" id="15_3kmi6"]
+
+[sub_resource type="GDScript" id="GDScript_c84ru"]
+script/source = "extends Node2D
+@onready var Player = preload(\"res://Player/player.tscn\")
+@onready var Anim = $Ending/AnimationPlayer
+var End : bool = false
+var isPaused : bool = false
+func _ready():
+	AudioManager.BGM_1.play()
+	GlobalVar.Score = 0
+	
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if !$Player_Slot.has_node(\"Player\"):
+		GlobalVar.Deathcount += 1
+		print(GlobalVar.Deathcount)
+		var Inst_player = Player.instantiate()
+		$Player_Slot.add_child(Inst_player)
+	if Input.is_action_just_pressed(\"Pause\") && End != true && GlobalVar.isPaused == false:	
+		get_tree().paused =  true
+		$UI/Centered/Paused.show()
+	
+		
+
+		
+
+		
+		
+
+
+func _on_finish_body_entered(body):
+	#$UI.hide()
+	End = true
+	$Ending/Level_Finished.Time_Stop()
+	get_tree().paused =  true
+	$Ending.show()
+	Anim.play(\"Fade\")
+	await Anim.animation_finished
+	
+	
+	
+	
+"
 
 [sub_resource type="Animation" id="Animation_om7au"]
 resource_name = "Fade"
@@ -115,7 +159,7 @@ size = Vector2(54, 42.5)
 
 [node name="level_4_scene" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_w4xkn")
+script = SubResource("GDScript_c84ru")
 
 [node name="Cave" type="TileMap" parent="."]
 tile_set = ExtResource("11_mx8mg")
@@ -413,6 +457,7 @@ scale = Vector2(2.75, 0.65)
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving_Plat/PlatformPath_loop"]
 position = Vector2(-199.169, -253.978)
 rotation = 1.5708
+scale = Vector2(1, 1)
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2

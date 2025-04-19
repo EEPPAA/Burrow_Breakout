@@ -4,6 +4,7 @@ extends Node2D
 var End : bool = false
 var isPaused : bool = false
 func _ready():
+	AudioManager.BGM_2.play()
 	GlobalVar.Score = 0
 	
 	

@@ -1,7 +1,6 @@
 [gd_scene load_steps=29 format=4 uid="uid://cck3odeky15wy"]
 
 [ext_resource type="FontFile" uid="uid://df6uneptrln2l" path="res://Fonts/Minecraft.ttf" id="1_2o66e"]
-[ext_resource type="Script" path="res://Test_scenes/Player_Respawn.gd" id="1_gek3i"]
 [ext_resource type="PackedScene" uid="uid://bacy4xvcl8htm" path="res://Enemy/Mob_2/mob_2.tscn" id="2_0lj7n"]
 [ext_resource type="Script" path="res://Test_scenes/label.gd" id="2_nlq0g"]
 [ext_resource type="PackedScene" uid="uid://cqfwjufb404pk" path="res://Global/score.tscn" id="3_eqk7o"]
@@ -17,6 +16,51 @@
 [ext_resource type="PackedScene" uid="uid://c8u8n7m0j56lw" path="res://Main_scene/paused.tscn" id="11_tlyyx"]
 [ext_resource type="PackedScene" uid="uid://bn2vf1nchwcwl" path="res://Enemy/Mob_1/mob_1.tscn" id="12_53mlp"]
 [ext_resource type="PackedScene" uid="uid://1q0l68ebq0qr" path="res://tileMap/Interactable_Tiles/MovingPLatform/platform_path.tscn" id="16_s11go"]
+
+[sub_resource type="GDScript" id="GDScript_5mqn0"]
+script/source = "extends Node2D
+@onready var Player = preload(\"res://Player/player.tscn\")
+@onready var Anim = $Ending/AnimationPlayer
+var End : bool = false
+var isPaused : bool = false
+func _ready():
+	AudioManager.BGM_2.play()
+	GlobalVar.Score = 0
+	
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if !$Player_Slot.has_node(\"Player\"):
+		GlobalVar.Deathcount += 1
+		print(GlobalVar.Deathcount)
+		var Inst_player = Player.instantiate()
+		$Player_Slot.add_child(Inst_player)
+	if Input.is_action_just_pressed(\"Pause\") && End != true && GlobalVar.isPaused == false:	
+		get_tree().paused =  true
+		$UI/Centered/Paused.show()
+	
+		
+
+		
+
+		
+		
+
+
+func _on_finish_body_entered(body):
+	#$UI.hide()
+	End = true
+	$Ending/Level_Finished.Time_Stop()
+	get_tree().paused =  true
+	$Ending.show()
+	Anim.play(\"Fade\")
+	await Anim.animation_finished
+	
+	
+	
+	
+"
 
 [sub_resource type="GDScript" id="GDScript_sk5db"]
 script/source = "extends Label
@@ -123,7 +167,7 @@ size = Vector2(54, 42.5)
 
 [node name="level_3_scene" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_gek3i")
+script = SubResource("GDScript_5mqn0")
 
 [node name="Cave" type="TileMap" parent="."]
 tile_set = ExtResource("11_quvlj")

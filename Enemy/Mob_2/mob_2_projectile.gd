@@ -63,7 +63,8 @@ func Phaser():
 
 	
 func explode():
-	
+	$".".set_collision_layer_value(4,false)
+	$AnimatedSprite2D.visible = false
 	if playSFX == 0:
 		playSFX += 1
 		AudioManager.fire_bounce.pitch_scale = (randf_range(0.6,1))
@@ -72,8 +73,7 @@ func explode():
 	
 		
 	$Death.emitting = true
-	$".".set_collision_layer_value(5,false)
-	$AnimatedSprite2D.visible = false
+	
 	await $Death.finished
 	queue_free()
 func _on_area_2d_body_entered(body):
