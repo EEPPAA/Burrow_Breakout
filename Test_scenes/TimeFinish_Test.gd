@@ -6,6 +6,7 @@ func Time_Stop():
 
 
 func _on_main_menu_pressed():
+	GlobalVar.Deathcount = 0
 	AudioManager.BGM_1.stop()
 	AudioManager.BGM_2.stop()
 	AudioManager.BGM_3.stop()
@@ -14,6 +15,7 @@ func _on_main_menu_pressed():
 
 
 func _on_next_level_pressed():
+	GlobalVar.Deathcount = 0
 	AudioManager.BGM_1.stop()
 	AudioManager.BGM_2.stop()
 	AudioManager.BGM_3.stop()

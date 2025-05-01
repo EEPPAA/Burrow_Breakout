@@ -6,10 +6,10 @@ extends StaticBody2D
 
 
 func _on_area_2d_body_entered(body):
-	AudioManager.Crmble.pitch_scale = (randf_range(0.8,1.1))
-	AudioManager.Crmble.play()
+	
 	if body.is_on_floor():
-		
+		AudioManager.Crmble.pitch_scale = (randf_range(0.8,1.1))
+		AudioManager.Crmble.play()
 		#print("is detecting")
 		anim.play("Flash")
 		$Crmble.emitting = true

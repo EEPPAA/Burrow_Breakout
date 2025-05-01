@@ -4,6 +4,7 @@ extends Control
 
 func _on_quit_pressed():
 	get_tree().paused =  false
+	GlobalVar.Deathcount = 0
 	AudioManager.BGM_1.stop()
 	AudioManager.BGM_2.stop()
 	AudioManager.BGM_3.stop()
