@@ -50,6 +50,7 @@ func _process(delta):
 
 
 func _on_finish_body_entered(body):
+	GlobalVar.lvl_unlocked = 4
 	#$UI.hide()
 	End = true
 	$Ending/Level_Finished.Time_Stop()
@@ -57,6 +58,7 @@ func _on_finish_body_entered(body):
 	$Ending.show()
 	Anim.play(\"Fade\")
 	await Anim.animation_finished
+	
 	
 	
 	
@@ -457,7 +459,6 @@ scale = Vector2(2.75, 0.65)
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving_Plat/PlatformPath_loop"]
 position = Vector2(-199.169, -253.978)
 rotation = 1.5708
-scale = Vector2(1, 1)
 disable_mode = 2
 collision_layer = 2
 collision_mask = 2

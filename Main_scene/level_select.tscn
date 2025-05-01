@@ -117,7 +117,9 @@ offset_left = -289.0
 offset_top = 4.0
 offset_right = 288.0
 offset_bottom = 82.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_ipwla")
+disabled = true
 text = "Level 2"
 
 [node name="Level_3" type="Button" parent="Buttons"]
@@ -125,7 +127,9 @@ layout_mode = 0
 offset_left = -289.0
 offset_top = -78.0
 offset_right = 288.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_ipwla")
+disabled = true
 text = "Level 3"
 
 [node name="Level_4" type="Button" parent="Buttons"]
@@ -134,7 +138,9 @@ offset_left = -289.0
 offset_top = -189.0
 offset_right = 288.0
 offset_bottom = -64.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_ipwla")
+disabled = true
 text = "Level 4"
 
 [node name="Back" type="TextureButton" parent="Buttons"]

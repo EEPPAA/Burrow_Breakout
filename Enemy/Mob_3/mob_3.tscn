@@ -152,10 +152,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ppvvr"]
 radius = 6.0
-height = 22.0
+height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28lg0"]
-size = Vector2(10, 5)
+size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrbsk"]
 size = Vector2(12, 3)
@@ -177,6 +177,7 @@ position = Vector2(-1.07288e-06, 3)
 scale = Vector2(1.1, 1.5)
 
 [node name="Player_Detect" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detect"]
@@ -202,16 +203,16 @@ sprite_frames = SubResource("SpriteFrames_66i8l")
 animation = &"Dead"
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_ppvvr")
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(1, -8.5)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_28lg0")
+debug_color = Color(0.939496, 1.2899e-05, 0.619119, 0.42)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(7, 2)

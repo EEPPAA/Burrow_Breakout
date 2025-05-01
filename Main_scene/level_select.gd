@@ -1,7 +1,13 @@
 extends Node2D
 
 
-
+func _ready():
+	if GlobalVar.lvl_unlocked >= 2:
+		$Buttons/Level_2.disabled = false
+	elif GlobalVar.lvl_unlocked >= 3:
+		$Buttons/Level_3.disabled = false
+	elif GlobalVar.lvl_unlocked >= 4:
+		$Buttons/Level_4.disabled = false
 
 
 func _on_level_1_pressed():

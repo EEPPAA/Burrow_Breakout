@@ -9,3 +9,4 @@ var isPaused : bool = false
 
 var Score : int 
 var Time_Score: String
+var lvl_unlocked : int = 1
