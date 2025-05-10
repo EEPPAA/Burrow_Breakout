@@ -170,7 +170,6 @@ scale = Vector2(2.91, 2.91)
 texture = ExtResource("15_6pyek")
 
 [node name="Label" type="Label" parent="UI"]
-visible = false
 layout_mode = 0
 offset_left = -69.0
 offset_top = 70.0

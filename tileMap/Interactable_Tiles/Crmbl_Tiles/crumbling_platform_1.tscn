@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl72oij8mo8ts"]
+[gd_scene load_steps=11 format=3 uid="uid://dl72oij8mo8ts"]
 
 [ext_resource type="Script" path="res://tileMap/Interactable_Tiles/Crmbl_Tiles/crumbling_platform.gd" id="1_g26fj"]
 [ext_resource type="Texture2D" uid="uid://c2q885hkjog65" path="res://Sprites/Tiles/Crmbl_Plat.png" id="2_6gsg6"]
+[ext_resource type="AudioStream" uid="uid://cwcvjxq2jgvld" path="res://SFX/Crumbling - Sound effect.mp3" id="3_7rn1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waaad"]
 size = Vector2(16, 8)
@@ -100,5 +101,9 @@ color = Color(0.580392, 0.352941, 0, 1)
 color_initial_ramp = SubResource("Gradient_hl085")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
+
+[node name="Crumbling-SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7rn1g")
+volume_db = -25.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -50,29 +50,29 @@ stream = ExtResource("7_88kbe")
 
 [node name="Fireball2" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("9_quo4y")
-volume_db = -25.0
+volume_db = -20.0
 
 [node name="FireBounce" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("10_lpvq0")
-volume_db = -20.0
+volume_db = -17.0
 
 [node name="Crumbling-SoundEffect" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("11_cggv6")
-volume_db = -25.0
+volume_db = -20.0
 
 [node name="music" type="Node" parent="."]
 
 [node name="Bgm-RockyCeiling" type="AudioStreamPlayer" parent="music"]
 process_mode = 3
 stream = ExtResource("9_iai35")
-volume_db = -25.0
+volume_db = -15.0
 
 [node name="PausedTheme-Tranquil" type="AudioStreamPlayer" parent="music"]
 process_mode = 3
 stream = ExtResource("10_qr0xn")
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="16-bitCave" type="AudioStreamPlayer" parent="music"]
 process_mode = 3
 stream = ExtResource("14_3eunh")
-volume_db = -20.0
+volume_db = -10.0

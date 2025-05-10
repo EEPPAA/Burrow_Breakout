@@ -66,7 +66,7 @@ height = 16.0
 size = Vector2(22, 4.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhrfe"]
-size = Vector2(5.5, 13)
+size = Vector2(7.75, 13.5)
 
 [sub_resource type="Curve" id="Curve_k6f3a"]
 _data = [Vector2(0.183168, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.777251, 0.164835), 0.0, 0.0, 0, 0]
@@ -129,7 +129,7 @@ position = Vector2(0, -3)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -2)
+position = Vector2(0.250004, -3.125)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_uhrfe")
 debug_color = Color(0.971905, 0, 0.444742, 0.42)
