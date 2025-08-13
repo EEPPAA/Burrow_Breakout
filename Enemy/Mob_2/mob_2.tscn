@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://bacy4xvcl8htm"]
 
 [ext_resource type="Script" path="res://Enemy/Mob_2/mob_2.gd" id="1_ahhrb"]
-[ext_resource type="Texture2D" uid="uid://c4227dj43elye" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot1.png" id="2_6xt1n"]
-[ext_resource type="Texture2D" uid="uid://bdfi8nk2wv8ok" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot2.png" id="3_n4tsb"]
-[ext_resource type="Texture2D" uid="uid://j4h7ew3ausdy" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot3.png" id="4_q5r3b"]
-[ext_resource type="Texture2D" uid="uid://cq7dkpb1f75qv" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot4.png" id="5_fwhgf"]
-[ext_resource type="Texture2D" uid="uid://cwx6po3uumoch" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move1.png" id="6_fgd5q"]
-[ext_resource type="Texture2D" uid="uid://dg2jyqktx7nrf" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move2.png" id="7_dvi7v"]
-[ext_resource type="Texture2D" uid="uid://d17fgiewrw0qg" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move3.png" id="8_2f5mk"]
+[ext_resource type="Texture2D" uid="uid://c4227dj43elye" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot1.png" id="2_1lgxp"]
+[ext_resource type="Texture2D" uid="uid://bdfi8nk2wv8ok" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot2.png" id="3_5kyfw"]
+[ext_resource type="Texture2D" uid="uid://j4h7ew3ausdy" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot3.png" id="4_1yfxy"]
+[ext_resource type="Texture2D" uid="uid://cq7dkpb1f75qv" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard shoots/lizard-shoot4.png" id="5_p1mod"]
+[ext_resource type="Texture2D" uid="uid://cwx6po3uumoch" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move1.png" id="6_0dqqu"]
+[ext_resource type="Texture2D" uid="uid://dg2jyqktx7nrf" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move2.png" id="7_00p38"]
+[ext_resource type="Texture2D" uid="uid://d17fgiewrw0qg" path="res://Sprites/Place_Holder/Enemy/Lizard/lizard moves/lizard-move3.png" id="8_df71p"]
 [ext_resource type="PackedScene" uid="uid://cqm8k8ki1n8jv" path="res://Universal_Animation/score_anim.tscn" id="9_gnopg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b6eht"]
@@ -17,16 +17,16 @@ radius = 12.4777
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6xt1n")
+"texture": ExtResource("2_1lgxp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_n4tsb")
+"texture": ExtResource("3_5kyfw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_q5r3b")
+"texture": ExtResource("4_1yfxy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_fwhgf")
+"texture": ExtResource("5_p1mod")
 }],
 "loop": false,
 "name": &"Attack",
@@ -34,24 +34,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_fgd5q")
+"texture": ExtResource("6_0dqqu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dvi7v")
+"texture": ExtResource("7_00p38")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_fgd5q")
+"texture": ExtResource("6_0dqqu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dvi7v")
+"texture": ExtResource("7_00p38")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_2f5mk")
+"texture": ExtResource("8_df71p")
 }],
 "loop": true,
 "name": &"Walk",

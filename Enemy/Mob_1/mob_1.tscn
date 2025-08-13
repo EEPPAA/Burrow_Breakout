@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c804fki2p0fqy" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-2.png" id="2_lduj5"]
 [ext_resource type="Texture2D" uid="uid://di48d7xwwsf7a" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-3.png" id="3_ne7au"]
 [ext_resource type="Texture2D" uid="uid://b5u2rupsj2f54" path="res://Sprites/Place_Holder/Enemy/Frog/idle/frog-idle-4.png" id="4_dcoii"]
-[ext_resource type="Texture2D" uid="uid://cos7nm7ctfjxy" path="res://Sprites/Place_Holder/Enemy/Frog/jump/frog-jump-1.png" id="5_35t7h"]
-[ext_resource type="Texture2D" uid="uid://dn7wevqb0n0ac" path="res://Sprites/Place_Holder/Enemy/Frog/jump/frog-jump-2.png" id="6_o83hc"]
+[ext_resource type="Texture2D" uid="uid://cos7nm7ctfjxy" path="res://Sprites/Place_Holder/Enemy/Frog/jump/frog-jump-1.png" id="6_nhhcy"]
+[ext_resource type="Texture2D" uid="uid://dn7wevqb0n0ac" path="res://Sprites/Place_Holder/Enemy/Frog/jump/frog-jump-2.png" id="7_bbyic"]
 [ext_resource type="PackedScene" uid="uid://cqm8k8ki1n8jv" path="res://Universal_Animation/score_anim.tscn" id="8_086ym"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smlna"]
@@ -30,17 +30,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_35t7h")
+"texture": ExtResource("6_nhhcy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_o83hc")
+"texture": ExtResource("7_bbyic")
 }, {
 "duration": 1.0,
 "texture": ExtResource("1_nn2eq")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 9.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gsvy"]
@@ -87,6 +87,7 @@ position = Vector2(-4.76837e-07, -2.38419e-07)
 scale = Vector2(0.721429, 0.75)
 sprite_frames = SubResource("SpriteFrames_smlna")
 animation = &"Walk"
+frame_progress = 0.684624
 
 [node name="Wall_Detect" type="Area2D" parent="."]
 collision_layer = 0
@@ -129,7 +130,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vjjxj")
 
 [node name="Score_Anim" parent="." instance=ExtResource("8_086ym")]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
